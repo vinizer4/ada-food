@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
 import Address from "../../address/entity/address";
 import User from "../entity/user";
 
