@@ -75,4 +75,13 @@ export default class User {
     public static createUser(name: string, email: string, cpf: string): User {
         return new User(name, email, cpf);
     }
+
+    public toUpdateObjectMapper() {
+        return {
+            name: this._name,
+            email: this._email,
+            cpf: this._cpf,
+            addresses: this._addresses,
+        };
+    }
 }
