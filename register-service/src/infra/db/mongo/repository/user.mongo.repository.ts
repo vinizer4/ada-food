@@ -18,13 +18,9 @@ export class UserMongoRepository implements UserRepository {
 
     async createUser(user: User): Promise<User> {
         try {
-            // const userToSave = {
-            //     name: user.name,
-            //     email: user.email,
-            //     cpf: user.cpf,
-            // };
+            const userToSave = user.toSaveObjectMapper()
 
-            const createdUser = await UserModel.create(User);
+            const createdUser = await UserModel.create(userToSave);
             return createdUser.toObject();
         } catch (error) {
             console.error("[UserMongoRepository] Erro ao criar usuário no banco:", error);

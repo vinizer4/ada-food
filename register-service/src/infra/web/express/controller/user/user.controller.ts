@@ -1,14 +1,14 @@
-import {CreateUserUseCase} from "../../../../../core/usecase/user/create/createUserUseCase";
+import {CreateUserUsecase} from "../../../../../core/usecase/user/create/create.user.usecase";
 import { Request, Response } from 'express';
 import {UserRepositoryAdapter} from "../../../../../config/adapters/db/database.adapter";
 import {GlobalExceptionHandler} from "../../middleware/exception/global.exception.handler";
 
 export class UserController {
     private static instance: UserController;
-    private createUserUseCase: CreateUserUseCase;
+    private createUserUseCase: CreateUserUsecase;
 
     private constructor() {
-        this.createUserUseCase = CreateUserUseCase.getInstance(
+        this.createUserUseCase = CreateUserUsecase.getInstance(
             UserRepositoryAdapter.getUserRepository()
         );
     }
@@ -28,6 +28,10 @@ export class UserController {
         } catch (error: any) {
             GlobalExceptionHandler.handleError(error, req, res);
         }
+    }
+
+    async updateUser(req: Request, res: Response) {
+
     }
 
 }

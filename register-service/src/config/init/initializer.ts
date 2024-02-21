@@ -1,9 +1,9 @@
 import {UserRepositoryAdapter} from "../adapters/db/database.adapter";
-import {CreateUserUseCase} from "../../core/usecase/user/create/createUserUseCase";
+import {CreateUserUsecase} from "../../core/usecase/user/create/create.user.usecase";
 
 export class Initializer {
     static initialize() {
         UserRepositoryAdapter.createUserRepository();
-        CreateUserUseCase.getInstance(UserRepositoryAdapter.getUserRepository());
+        CreateUserUsecase.getInstance(UserRepositoryAdapter.getUserRepository());
     }
 }

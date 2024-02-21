@@ -85,13 +85,11 @@ export default class User {
         };
     }
 
-    public toOutputObjectMapper() {
+    public toSaveObjectMapper() {
         return {
-            id: this._id,
             name: this._name,
             email: this._email,
-            cpf: this._cpf,
+            cpf: this._cpf
         };
     }
-
 }
