@@ -11,7 +11,7 @@ export default class Address {
     country: string;
     cep: number;
 
-    constructor(userId: string, street: string, number: string, neighborhood: string, city: string, state: string, country: string, cep: number) {
+    private constructor(userId: string, street: string, number: string, neighborhood: string, city: string, state: string, country: string, cep: number) {
         this.id = uuidv4();
         this.userId = userId;
         this.street = street;
@@ -47,5 +47,9 @@ export default class Address {
         if (!this.cep || this.cep <= 0) {
             throw new Error('CEP is required and must be valid');
         }
+    }
+
+    static create(userId: string, street: string, number: string, neighborhood: string, city: string, state: string, country: string, cep: number) {
+        return new Address(userId, street, number, neighborhood, city, state, country, cep);
     }
 }
