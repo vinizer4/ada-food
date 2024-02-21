@@ -30,21 +30,42 @@ export class UserMongoRepository implements UserRepository {
 
 
     async findUserById(id: string): Promise<User | null> {
-        const user = await UserModel.findById(id);
-        return user ? user.toObject() : null;
+        try {
+            const user = await UserModel.findById(id);
+            return user ? user.toObject() : null
+        } catch (error) {
+            console.error("[UserMongoRepository] Erro ao buscar usuário por id no banco:", error);
+            throw new DatabaseOperationException("Falha ao buscar usuário por id no banco de dados MongoDb.");
+        }
     }
 
     async findUserByEmail(email: string): Promise<User | null> {
-        const user = await UserModel.findOne({ email });
-        return user ? user.toObject() : null;
+        try {
+            const user = await UserModel.findOne({ email });
+            return user ? user.toObject() : null;
+        } catch (error) {
+            console.error("[UserMongoRepository] Erro ao buscar usuário por email no banco:", error);
+            throw new DatabaseOperationException("Falha ao buscar usuário por email no banco de dados MongoDb.");
+        }
     }
 
     async updateUser(id: string, user: User): Promise<void> {
-        const userData = user.toUpdateObjectMapper();
-        await UserModel.findByIdAndUpdate(id, userData);
+        try {
+            const userData = user.toUpdateObjectMapper();
+            await UserModel.findByIdAndUpdate(id, userData);
+        } catch (error) {
+            console.error("[UserMongoRepository] Erro ao atualizar usuário no banco:", error);
+            throw new DatabaseOperationException("Falha ao atualizar usuário no banco de dados MongoDb.");
+        }
+
     }
 
     async deleteUser(id: string): Promise<void> {
-        await UserModel.findByIdAndDelete(id);
+        try {
+            await UserModel.findByIdAndDelete(id);
+        } catch (error) {
+            console.error("[UserMongoRepository] Erro ao deletar usuário no banco:", error);
+            throw new DatabaseOperationException("Falha ao deletar usuário no banco de dados MongoDb.");
+        }
     }
 }
