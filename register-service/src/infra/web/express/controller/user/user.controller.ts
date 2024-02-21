@@ -6,6 +6,7 @@ import {UpdateUserUsecase} from "../../../../../core/usecase/user/update/update.
 import {DeleteUserUseCase} from "../../../../../core/usecase/user/delete/delete.user.usecase";
 import {FindUserByIdUseCase} from "../../../../../core/usecase/user/find/find.user.by.id.usecase";
 import {FindUserByEmailUseCase} from "../../../../../core/usecase/user/find/find.user.by.email.usecase";
+import {MessagerindAdapter} from "../../../../../config/adapters/message/messagerind.adapter";
 
 export class UserController {
     private static instance: UserController;
@@ -18,7 +19,8 @@ export class UserController {
 
     private constructor() {
         this.createUserUseCase = CreateUserUsecase.getInstance(
-            UserRepositoryAdapter.getUserRepository()
+            UserRepositoryAdapter.getUserRepository(),
+            MessagerindAdapter.getMessagerindAdapter()
         );
         this.updateUserUseCase = UpdateUserUsecase.getInstance(
             UserRepositoryAdapter.getUserRepository()

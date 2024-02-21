@@ -7,10 +7,17 @@ import {FindUserByEmailUseCase} from "../../core/usecase/user/find/find.user.by.
 import {MessagerindAdapter} from "../adapters/message/messagerind.adapter";
 
 export class Initializer {
-    static initialize() {
+    static async initialize() {
         UserRepositoryAdapter.createUserRepository();
+
         MessagerindAdapter.createMessagerindAdapter();
-        CreateUserUsecase.getInstance(UserRepositoryAdapter.getUserRepository());
+        const messagerindAdapter = MessagerindAdapter.getMessagerindAdapter();
+        await messagerindAdapter.connect();
+
+        CreateUserUsecase.getInstance(
+            UserRepositoryAdapter.getUserRepository(),
+            messagerindAdapter
+        );
         UpdateUserUsecase.getInstance(UserRepositoryAdapter.getUserRepository());
         DeleteUserUseCase.getInstance(UserRepositoryAdapter.getUserRepository());
         FindUserByIdUseCase.getInstance(UserRepositoryAdapter.getUserRepository());

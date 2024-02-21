@@ -1,10 +1,10 @@
-import {MessagingIntegrationPort} from "../../../core/application/integration/message/messaging.port";
+import {MessagingBroker} from "../../../core/application/integration/message/messaging.port";
 import {RabbitMQAdapter} from "../../../infra/integration/message/rabbitmq/rabbit.mq.adapter";
 
 export class MessagerindAdapter {
-    private static instance: MessagingIntegrationPort;
+    private static instance: MessagingBroker;
 
-    static getMessagerindAdapter(): MessagingIntegrationPort {
+    static getMessagerindAdapter(): MessagingBroker {
         if (!this.instance) {
             throw new Error("MessagerindAdapter not initialized");
         }
