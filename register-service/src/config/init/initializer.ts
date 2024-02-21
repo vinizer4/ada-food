@@ -1,9 +1,9 @@
 import {UserRepositoryAdapter} from "../adapters/db/database.adapter";
-import {UserRepository} from "../../core/application/user/repository/user.repository.interface";
-import dotenv from "dotenv";
+import {CreateUserUseCase} from "../../core/usecase/user/create/createUserUseCase";
 
 export class Initializer {
     static initialize() {
         UserRepositoryAdapter.createUserRepository();
+        CreateUserUseCase.getInstance(UserRepositoryAdapter.getUserRepository());
     }
 }

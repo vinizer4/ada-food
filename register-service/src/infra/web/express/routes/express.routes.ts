@@ -3,7 +3,7 @@ import {UserController} from "../controller/user/user.controller";
 
 export class ExpressRouteConfig {
     private app: Express;
-    private userController: UserController;
+    private readonly userController: UserController;
 
     constructor(app: Express) {
         this.app = app;
@@ -11,6 +11,6 @@ export class ExpressRouteConfig {
     }
 
     public initializeRoutes(): void {
-        this.app.post('/register/user', this.userController.createUser);
+        this.app.post('/register/user', this.userController.createUser.bind(this.userController));
     }
 }

@@ -16,7 +16,12 @@ export class UserMongoRepository implements UserRepository {
     }
 
     async createUser(user: User): Promise<User> {
-        const createdUser = await UserModel.create(user);
+        const userToSave = {
+            name: user.name,
+            email: user.email,
+            cpf: user.cpf
+        };
+        const createdUser = await UserModel.create(userToSave);
         return createdUser.toObject();
     }
 
