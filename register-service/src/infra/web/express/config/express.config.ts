@@ -1,20 +1,17 @@
 import express, { Express } from 'express';
-import bodyParser from 'body-parser';
+import {ExpressMiddlewareConfig} from "../middleware/express.middleware";
+import {ExpressRouteConfig} from "../routes/express.routes";
 
-export class ExpressApp {
-    public app: Express;
+export class ExpressConfig {
+    readonly app: Express;
 
     constructor() {
         this.app = express();
-        this.initializeMiddlewares();
-        this.initializeRoutes();
-    }
+        const middlewareConfig = new ExpressMiddlewareConfig(this.app);
+        const routeConfig = new ExpressRouteConfig(this.app);
 
-    private initializeMiddlewares(): void {
-        this.app.use(bodyParser.json());
-    }
-
-    private initializeRoutes(): void {
+        middlewareConfig.initializeMiddlewares();
+        routeConfig.initializeRoutes();
     }
 
     public listen(port: number): void {

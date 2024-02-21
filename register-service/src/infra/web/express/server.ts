@@ -1,12 +1,12 @@
 import {MongoConnection} from "../../db/mongo/config/mongo-connection";
-import {ExpressApp} from "./config/express.config";
+import {ExpressConfig} from "./config/express.config";
 
 
 export class ExpressServer {
-    private expressApp: ExpressApp;
+    private expressApp: ExpressConfig;
 
     constructor() {
-        this.expressApp = new ExpressApp();
+        this.expressApp = new ExpressConfig();
     }
 
     public async start(): Promise<void> {

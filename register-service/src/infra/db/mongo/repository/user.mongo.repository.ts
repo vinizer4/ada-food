@@ -3,6 +3,18 @@ import User from "../../../../core/domain/user/entity/user";
 import UserModel from "../models/user.model";
 
 export class UserMongoRepository implements UserRepository {
+    private static instance: UserMongoRepository;
+
+    private constructor() {
+    }
+
+    public static getInstance(): UserMongoRepository {
+        if (!UserMongoRepository.instance) {
+            UserMongoRepository.instance = new UserMongoRepository();
+        }
+        return UserMongoRepository.instance;
+    }
+
     async createUser(user: User): Promise<User> {
         const createdUser = await UserModel.create(user);
         return createdUser.toObject();
