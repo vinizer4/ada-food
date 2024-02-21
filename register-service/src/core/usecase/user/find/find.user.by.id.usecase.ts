@@ -1,5 +1,4 @@
 import {UserRepository} from "../../../application/user/repository/user.repository.interface";
-import {UserFactory} from "../../../domain/user/factory/user.factory";
 import {UsecaseExecutionException} from "../../../exception/usecase.execution.exception";
 import {FindUserOutputUsecase} from "./output/find.output.usecase";
 import {FindByIdInputUsecase} from "./input/find.input.usecase";
@@ -22,16 +21,16 @@ export class FindUserByIdUseCase {
 
     async execute(input: FindByIdInputUsecase): Promise<FindUserOutputUsecase> {
         try {
-            console.log("[UpdateUserUsecase] - Buscando usuário com id: ", input.id);
+            console.log("[FindUserByIdUseCase] - Buscando usuário com id: ", input.id);
 
             const user = await this.userRepository.findUserById(input.id);
 
             if (!user) {
-                console.error("[UpdateUserUsecase] - Usuário não encontrado com id: ", input.id);
+                console.error("[FindUserByIdUseCase] - Usuário não encontrado com id: ", input.id);
                 throw new ResourceNotfoundException("Usuário não encontrado");
             }
 
-            console.log("[UpdateUserUsecase] - Usuário buscado com sucesso: ", user);
+            console.log("[FindUserByIdUseCase] - Usuário buscado com sucesso: ", user);
 
             return {
                 id: user.id,
@@ -40,7 +39,7 @@ export class FindUserByIdUseCase {
                 cpf: user.cpf
             }
         } catch (error: any) {
-            console.error("[UpdateUserUsecase] - Erro na execução do usecase de update de usuário: ", error);
+            console.error("[FindUserByIdUseCase] - Erro na execução do usecase de update de usuário: ", error);
             throw new UsecaseExecutionException("Erro na atualização de usuário");
         }
     }
