@@ -1,7 +1,7 @@
 import Address from "../../address/entity/address";
 import User from "../entity/user";
 
-class UserFactory {
+export class UserFactory {
     static create(name: string, email: string, cpf: string): User {
         return User.createUser(name, email, cpf);
     }
