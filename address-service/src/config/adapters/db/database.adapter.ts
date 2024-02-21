@@ -1,4 +1,5 @@
 import {AddressRepository} from "../../../core/application/address/repository/address.repository.interface";
+import {AddressMongoRepository} from "../../../infra/db/mongo/repository/address.mongo.repository";
 
 export class DatabaseAdapter {
     private static addressRepository: AddressRepository;
@@ -11,10 +12,10 @@ export class DatabaseAdapter {
     }
 
     static createAddressRepository() {
-        // if (process.env.DB_TYPE === 'mongo') {
-        //     this.addressRepository = AddressMongoRepository.getInstance();
-        // } else {
-        //     throw new Error('Invalid database');
-        // }
+        if (process.env.DB_TYPE === 'mongo') {
+            this.addressRepository = AddressMongoRepository.getInstance();
+        } else {
+            throw new Error('Invalid database');
+        }
     }
 }
