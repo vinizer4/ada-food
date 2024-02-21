@@ -1,6 +1,7 @@
 import {UserRepository} from "../../../../core/application/user/repository/user.repository.interface";
 import User from "../../../../core/domain/user/entity/user";
 import UserModel from "../models/user.model";
+import {DatabaseOperationException} from "../../../../core/exception/database.operation.exception";
 
 export class UserMongoRepository implements UserRepository {
     private static instance: UserMongoRepository;
@@ -16,14 +17,21 @@ export class UserMongoRepository implements UserRepository {
     }
 
     async createUser(user: User): Promise<User> {
-        const userToSave = {
-            name: user.name,
-            email: user.email,
-            cpf: user.cpf
-        };
-        const createdUser = await UserModel.create(userToSave);
-        return createdUser.toObject();
+        try {
+            // const userToSave = {
+            //     name: user.name,
+            //     email: user.email,
+            //     cpf: user.cpf,
+            // };
+
+            const createdUser = await UserModel.create(User);
+            return createdUser.toObject();
+        } catch (error) {
+            console.error("[UserMongoRepository] Erro ao criar usuário no banco:", error);
+            throw new DatabaseOperationException("Falha ao criar usuário no banco de dados MongoDb.");
+        }
     }
+
 
     async findUserById(id: string): Promise<User | null> {
         const user = await UserModel.findById(id);

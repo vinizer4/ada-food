@@ -1,6 +1,7 @@
 import {CreateUserUseCase} from "../../../../../core/usecase/user/create/createUserUseCase";
 import { Request, Response } from 'express';
 import {UserRepositoryAdapter} from "../../../../../config/adapters/db/database.adapter";
+import {GlobalExceptionHandler} from "../../middleware/exception/global.exception.handler";
 
 export class UserController {
     private static instance: UserController;
@@ -24,9 +25,8 @@ export class UserController {
             const user = req.body;
             const createdUser = await this.createUserUseCase.execute(user);
             res.status(201).json(createdUser);
-        } catch (error) {
-            console.error("[UserController] - Error creating user: ", error);
-            res.status(500).json({ error: "Ocorreu um erro inesperado" });
+        } catch (error: any) {
+            GlobalExceptionHandler.handleError(error, req, res);
         }
     }
 

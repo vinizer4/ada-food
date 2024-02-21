@@ -2,6 +2,7 @@ import {CreateUserInputUsecase} from "./input/create.user.input.usecase";
 import {CreateUserOutputUsecase} from "./output/create.user.output.usecase";
 import {UserRepository} from "../../../application/user/repository/user.repository.interface";
 import {UserFactory} from "../../../domain/user/factory/user.factory";
+import {UsecaseExecutionException} from "../../../exception/usecase.execution.exception";
 
 export class CreateUserUseCase {
     private static instance: CreateUserUseCase;
@@ -19,17 +20,22 @@ export class CreateUserUseCase {
     }
 
     async execute(input: CreateUserInputUsecase): Promise<CreateUserOutputUsecase> {
-        console.log("[CreateUserUsecase] - Creating user with input: ", input);
-        const user = UserFactory.create(input.name, input.email, input.cpf);
+        try {
+            console.log("[CreateUserUsecase] - Creating user with input: ", input);
+            const user = UserFactory.create(input.name, input.email, input.cpf);
 
-        await this.userRepository.createUser(user);
-        console.log("[CreateUserUsecase] - User created: ", user);
+            await this.userRepository.createUser(user);
+            console.log("[CreateUserUsecase] - User created: ", user);
 
-        return {
-            id: user.id,
-            name: user.name,
-            email: user.email,
-            cpf: user.cpf
-        };
+            return {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                cpf: user.cpf
+            };
+        } catch (error: any) {
+            console.error("[CreateUserUsecase] - Error creating user: ", error);
+            throw new UsecaseExecutionException("Error creating user.");
+        }
     }
 }
