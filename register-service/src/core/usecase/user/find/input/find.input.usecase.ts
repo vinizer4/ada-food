@@ -1,7 +1,7 @@
-export interface FindByIdInputUsecase {
+export interface FindUserByIdInputUsecase {
     id: string;
 }
 
-export interface FindByEmailInputUsecase {
+export interface FindUserByEmailInputUsecase {
     email: string;
 }

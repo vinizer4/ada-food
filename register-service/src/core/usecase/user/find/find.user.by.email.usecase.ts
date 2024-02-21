@@ -1,7 +1,7 @@
 import {UserRepository} from "../../../application/user/repository/user.repository.interface";
 import {UsecaseExecutionException} from "../../../exception/usecase.execution.exception";
 import {FindUserOutputUsecase} from "./output/find.output.usecase";
-import {FindByEmailInputUsecase} from "./input/find.input.usecase";
+import {FindUserByEmailInputUsecase} from "./input/find.input.usecase";
 import {ResourceNotfoundException} from "../../../exception/resource.notfound.exception";
 
 export class FindUserByEmailUseCase {
@@ -19,7 +19,7 @@ export class FindUserByEmailUseCase {
         return FindUserByEmailUseCase.instance;
     }
 
-    async execute(input: FindByEmailInputUsecase): Promise<FindUserOutputUsecase> {
+    async execute(input: FindUserByEmailInputUsecase): Promise<FindUserOutputUsecase> {
         try {
             console.log("[FindUserByEmailUseCase] - Buscando usuário por email: ", input.email);
 

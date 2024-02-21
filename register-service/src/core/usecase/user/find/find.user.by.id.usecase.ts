@@ -1,7 +1,7 @@
 import {UserRepository} from "../../../application/user/repository/user.repository.interface";
 import {UsecaseExecutionException} from "../../../exception/usecase.execution.exception";
 import {FindUserOutputUsecase} from "./output/find.output.usecase";
-import {FindByIdInputUsecase} from "./input/find.input.usecase";
+import {FindUserByIdInputUsecase} from "./input/find.input.usecase";
 import {ResourceNotfoundException} from "../../../exception/resource.notfound.exception";
 
 export class FindUserByIdUseCase {
@@ -19,7 +19,7 @@ export class FindUserByIdUseCase {
         return FindUserByIdUseCase.instance;
     }
 
-    async execute(input: FindByIdInputUsecase): Promise<FindUserOutputUsecase> {
+    async execute(input: FindUserByIdInputUsecase): Promise<FindUserOutputUsecase> {
         try {
             console.log("[FindUserByIdUseCase] - Buscando usuário com id: ", input.id);
 
