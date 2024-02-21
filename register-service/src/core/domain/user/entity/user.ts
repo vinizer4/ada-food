@@ -84,4 +84,14 @@ export default class User {
             addresses: this._addresses,
         };
     }
+
+    public toOutputObjectMapper() {
+        return {
+            id: this._id,
+            name: this._name,
+            email: this._email,
+            cpf: this._cpf,
+        };
+    }
+
 }
