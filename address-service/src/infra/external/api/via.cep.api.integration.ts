@@ -9,7 +9,7 @@ export class ViaCepApiIntegration implements CepApiIntegration {
 
     private constructor() {}
 
-    public static getInstance(): ViaCepApiIntegration {
+    public static getInstance(): CepApiIntegration {
         if (!ViaCepApiIntegration.instance) {
             ViaCepApiIntegration.instance = new ViaCepApiIntegration();
         }
@@ -20,8 +20,8 @@ export class ViaCepApiIntegration implements CepApiIntegration {
         try {
             cep = this.formatCep(cep);
             const response = await axios.get(`${process.env.VIA_CEP_API_URL}/${cep}/json`);
-            this.validateResponse(response.data);
-            return response.data;
+            this.validateResponse(response);
+            return this.responseToOutputMapper(response.data);
         } catch (error) {
             console.log("[ViaCepApiIntegration] Falha ao buscar endereço pelo CEP");
             throw new IntegrationException("Falha ao buscar endereço pelo CEP")
@@ -36,8 +36,26 @@ export class ViaCepApiIntegration implements CepApiIntegration {
         if (response.erro) {
             throw new IntegrationException("CEP inválido");
         }
-        if (!response.data) {
+        if (response.status === 404) {
             throw new ResourceNotfoundException("Endereço não encontrado")
+        }
+        if (response.status !== 200) {
+            throw new IntegrationException("Erro ao buscar endereço pelo CEP")
+        }
+    }
+
+    private responseToOutputMapper(response: any): ViaCepApiOutput {
+        return {
+            cep: response.cep,
+            logradouro: response.logradouro,
+            complemento: response.complemento,
+            bairro: response.bairro,
+            localidade: response.localidade,
+            uf: response.uf,
+            ibge: response.ibge,
+            gia: response.gia,
+            ddd: response.ddd,
+            siafi: response.siafi
         }
     }
 }
