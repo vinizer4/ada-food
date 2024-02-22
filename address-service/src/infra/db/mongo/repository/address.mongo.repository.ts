@@ -1,7 +1,7 @@
 import {AddressRepository} from "../../../../core/application/address/repository/address.repository.interface";
-import {Address} from "cluster";
 import AddressModel from "../model/address.model";
 import {DatabaseOperationException} from "../../../../core/exception/database.operation.exception";
+import Address from "../../../../core/domain/address/entity/address";
 
 
 export class AddressMongoRepository implements AddressRepository {
@@ -33,16 +33,6 @@ export class AddressMongoRepository implements AddressRepository {
         } catch (error) {
             console.error("[AddressMongoRepository] Erro ao buscar endereço por userId no banco:", error);
             throw new DatabaseOperationException("Falha ao buscar endereço por userId no banco de dados MongoDb.");
-        }
-    }
-
-    async findAddressById(id: string): Promise<Address | null> {
-        try {
-            const address = await AddressModel.findById(id);
-            return address ? address.toObject() : null;
-        } catch (error) {
-            console.error("[AddressMongoRepository] Erro ao buscar endereço por id no banco:", error);
-            throw new DatabaseOperationException("Falha ao buscar endereço por id no banco de dados MongoDb.");
         }
     }
 

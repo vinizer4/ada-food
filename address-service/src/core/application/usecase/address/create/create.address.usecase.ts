@@ -1,9 +1,9 @@
-import {AddressRepository} from "../address/repository/address.repository.interface";
+import {AddressRepository} from "../../../address/repository/address.repository.interface";
 import {CreateAddressUseCaseInput} from "./input/create.address.usecase.input";
 import {CreateAddressUseCaseOutput} from "./output/create.address.usecase.output";
-import {UsecaseExecutionException} from "../../exception/usecase.execution.exception";
-import {AddressFactory} from "../../domain/address/factory/address.factory";
-import Address from "../../domain/address/entity/address";
+import {UsecaseExecutionException} from "../../../../exception/usecase.execution.exception";
+import {AddressFactory} from "../../../../domain/address/factory/address.factory";
+import Address from "../../../../domain/address/entity/address";
 
 export class CreateAddressUsecase {
     private static intance: CreateAddressUsecase;
