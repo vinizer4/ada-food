@@ -1,19 +1,19 @@
 import {UsecaseExecutionException} from "../../../../exception/usecase.execution.exception";
 import {AddressRepository} from "../../../repository/address/address.repository.interface";
 
-export class deleteAdressUseCase {
-    private static instance: deleteAdressUseCase;
+export class DeleteAdressUsecase {
+    private static instance: DeleteAdressUsecase;
     private readonly addressRepository: AddressRepository;
 
     private constructor(addressRepository: AddressRepository) {
         this.addressRepository = addressRepository;
     }
 
-    public static getInstance(addressRepository: AddressRepository): deleteAdressUseCase {
-        if (!deleteAdressUseCase.instance) {
-            deleteAdressUseCase.instance = new deleteAdressUseCase(addressRepository);
+    public static getInstance(addressRepository: AddressRepository): DeleteAdressUsecase {
+        if (!DeleteAdressUsecase.instance) {
+            DeleteAdressUsecase.instance = new DeleteAdressUsecase(addressRepository);
         }
-        return deleteAdressUseCase.instance;
+        return DeleteAdressUsecase.instance;
     }
 
     async execute(id: string): Promise<void> {
