@@ -31,7 +31,7 @@ export class UserMongoRepository implements UserRepository {
 
     async findUserById(id: string): Promise<User | null> {
         try {
-            const user = await UserModel.findById(id);
+            const user = await UserModel.findOne({ id });
             return user ? user.toObject() : null
         } catch (error) {
             console.error("[UserMongoRepository] Erro ao buscar usuário por id no banco:", error);

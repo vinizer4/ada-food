@@ -39,8 +39,8 @@ export class FindUserByIdUseCase {
                 cpf: user.cpf
             }
         } catch (error: any) {
-            console.error("[FindUserByIdUseCase] - Erro na execução do usecase de update de usuário: ", error);
-            throw new UsecaseExecutionException("Erro na atualização de usuário");
+            console.error("[FindUserByIdUseCase] - Erro na execução do usecase de busca de usuário: ", error);
+            throw new UsecaseExecutionException("Erro na busca de usuário");
         }
     }
 }

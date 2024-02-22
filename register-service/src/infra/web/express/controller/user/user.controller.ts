@@ -65,7 +65,7 @@ export class UserController {
 
     async findUserById(req: Request, res: Response) {
         try {
-            const userId = req.path;
+            const userId = req.params.id;
             const input = {id: userId};
             const user = await this.findUserByIdUseCase.execute(input);
             res.status(200).json(user);
