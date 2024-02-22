@@ -52,7 +52,7 @@ export class UserMongoRepository implements UserRepository {
     async updateUser(id: string, user: User): Promise<void> {
         try {
             const userData = user.toUpdateObjectMapper();
-            await UserModel.findByIdAndUpdate(id, userData);
+            await UserModel.findOneAndUpdate({ id: id}, userData);
         } catch (error) {
             console.error("[UserMongoRepository] Erro ao atualizar usuário no banco:", error);
             throw new DatabaseOperationException("Falha ao atualizar usuário no banco de dados MongoDb.");
