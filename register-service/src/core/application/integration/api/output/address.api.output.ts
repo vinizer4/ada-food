@@ -1,4 +1,4 @@
-export interface CreateAddressUseCaseOutput {
+export interface AddressApiOutput {
     id: string;
     userId: string;
     street: string;

@@ -31,7 +31,7 @@ export class UserMongoRepository implements UserRepository {
 
     async findUserById(id: string): Promise<User | null> {
         try {
-            const user = await UserModel.findById(id);
+            const user = await UserModel.findOne({ id });
             return user ? user.toObject() : null
         } catch (error) {
             console.error("[UserMongoRepository] Erro ao buscar usuário por id no banco:", error);
@@ -52,7 +52,7 @@ export class UserMongoRepository implements UserRepository {
     async updateUser(id: string, user: User): Promise<void> {
         try {
             const userData = user.toUpdateObjectMapper();
-            await UserModel.findByIdAndUpdate(id, userData);
+            await UserModel.findOneAndUpdate({ id: id}, userData);
         } catch (error) {
             console.error("[UserMongoRepository] Erro ao atualizar usuário no banco:", error);
             throw new DatabaseOperationException("Falha ao atualizar usuário no banco de dados MongoDb.");
@@ -62,7 +62,7 @@ export class UserMongoRepository implements UserRepository {
 
     async deleteUser(id: string): Promise<void> {
         try {
-            await UserModel.findByIdAndDelete(id);
+            await UserModel.findOneAndDelete({ id });
         } catch (error) {
             console.error("[UserMongoRepository] Erro ao deletar usuário no banco:", error);
             throw new DatabaseOperationException("Falha ao deletar usuário no banco de dados MongoDb.");

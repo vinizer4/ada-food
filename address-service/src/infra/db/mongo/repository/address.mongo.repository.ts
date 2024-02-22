@@ -38,7 +38,7 @@ export class AddressMongoRepository implements AddressRepository {
 
     async updateAddress(id: string, address: Address): Promise<void> {
         try {
-            await AddressModel.findByIdAndUpdate(id, address);
+            await AddressModel.findOneAndUpdate({ id: id }, address);
         } catch (error) {
             console.error("[AddressMongoRepository] Erro ao atualizar endereço no banco:", error);
             throw new DatabaseOperationException("Falha ao atualizar endereço no banco de dados MongoDb.");
@@ -47,7 +47,7 @@ export class AddressMongoRepository implements AddressRepository {
 
     async deleteAddress(id: string): Promise<void> {
         try {
-            await AddressModel.findByIdAndDelete(id);
+            await AddressModel.findOneAndDelete({ id })
         } catch (error) {
             console.error("[AddressMongoRepository] Erro ao deletar endereço no banco:", error);
             throw new DatabaseOperationException("Falha ao deletar endereço no banco de dados MongoDb.");

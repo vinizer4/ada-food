@@ -4,14 +4,14 @@ export default class Address {
     id: string;
     userId: string;
     street: string;
-    number: string;
+    number: number;
     neighborhood: string;
     city: string;
     state: string;
     country: string;
     cep: number;
 
-    private constructor(userId: string, street: string, number: string, neighborhood: string, city: string, state: string, country: string, cep: number) {
+    private constructor(userId: string, street: string, number: number, neighborhood: string, city: string, state: string, country: string, cep: number) {
         this.id = uuidv4();
         this.userId = userId;
         this.street = street;
@@ -28,7 +28,7 @@ export default class Address {
         if (!this.street || this.street.length === 0) {
             throw new Error('Street is required');
         }
-        if (!this.number || this.number.length === 0) {
+        if (!this.number || this.number === 0) {
             throw new Error('Number is required');
         }
         if (!this.neighborhood || this.neighborhood.length === 0) {
@@ -49,7 +49,13 @@ export default class Address {
         }
     }
 
-    static create(userId: string, street: string, number: string, neighborhood: string, city: string, state: string, country: string, cep: number) {
+    static create(userId: string, street: string, number: number, neighborhood: string, city: string, state: string, country: string, cep: number) {
         return new Address(userId, street, number, neighborhood, city, state, country, cep);
+    }
+
+    static createWithId(id: string, userId: string, street: string, number: number, neighborhood: string, city: string, state: string, country: string, cep: number) {
+        const address = new Address(userId, street, number, neighborhood, city, state, country, cep);
+        address.id = id;
+        return address;
     }
 }

@@ -1,5 +1,4 @@
-export interface UpdateAddressUsecaseInput {
-    id: string,
+export interface CreateAddressApiInput {
     userId: string,
     street: string,
     number: number,

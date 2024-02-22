@@ -65,7 +65,7 @@ export class UserController {
 
     async findUserById(req: Request, res: Response) {
         try {
-            const userId = req.path;
+            const userId = req.params.id;
             const input = {id: userId};
             const user = await this.findUserByIdUseCase.execute(input);
             res.status(200).json(user);
@@ -76,7 +76,7 @@ export class UserController {
 
     async findUserByEmail(req: Request, res: Response) {
         try {
-            const userEmail = req.path;
+            const userEmail = req.query.email as string;
             const input = {email: userEmail};
             const user = await this.findUserByEmailUseCase.execute(input);
             res.status(200).json(user);
@@ -87,10 +87,10 @@ export class UserController {
 
     async deleteUser(req: Request, res: Response) {
         try {
-            const userId = req.path;
+            const userId = req.params.id;
             const input = {id: userId};
             await this.deleteUserUseCase.execute(input);
-            res.status(204)
+            res.status(204).send();
         } catch (error: any) {
             GlobalExceptionHandler.handleError(error, req, res);
         }
