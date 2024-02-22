@@ -1,5 +1,5 @@
 import {CepApiIntegration} from "../../../core/application/integration/api/cep.api.integration";
-import {ViaCepApiIntegration} from "../../../infra/external/api/via.cep.api.integration";
+import {ViaCepApiIntegration} from "../../../infra/integration/external/api/viacep/via.cep.api.integration";
 
 export class ApiAdapter {
     private static cepApiIntegration: CepApiIntegration;

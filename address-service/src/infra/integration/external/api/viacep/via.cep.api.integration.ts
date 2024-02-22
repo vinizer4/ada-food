@@ -1,8 +1,8 @@
-import {IntegrationException} from "../../../core/exception/integration.exception";
-import {CepApiIntegration} from "../../../core/application/integration/api/cep.api.integration";
+import {IntegrationException} from "../../../../../core/exception/integration.exception";
+import {CepApiIntegration} from "../../../../../core/application/integration/api/cep.api.integration";
 import axios from "axios";
 import {ViaCepApiOutput} from "./output/via.cep.api.output";
-import {ResourceNotfoundException} from "../../../core/exception/resource.notfound.exception";
+import {ResourceNotfoundException} from "../../../../../core/exception/resource.notfound.exception";
 
 export class ViaCepApiIntegration implements CepApiIntegration {
     private static instance: ViaCepApiIntegration;
