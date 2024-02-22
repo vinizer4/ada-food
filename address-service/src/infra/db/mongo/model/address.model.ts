@@ -5,7 +5,7 @@ interface AddressDocument extends Document {
     id: string;
     userId: string;
     street: string;
-    number: string;
+    number: number;
     neighborhood: string;
     city: string;
     state: string;
@@ -18,12 +18,12 @@ const AddressSchema = new Schema(
         id: { type: String, default: uuidv4 },
         userId: { type: String, required: true },
         street: { type: String, required: true },
-        number: { type: String, required: true },
+        number: { type: Number, required: true },
         neighborhood: { type: String, required: true },
         city: { type: String, required: true },
         state: { type: String, required: true },
         country: { type: String, required: true },
-        cep: { type: Number, required: true }
+        cep: { type: String, required: true }
     },
     { timestamps: true }
 );

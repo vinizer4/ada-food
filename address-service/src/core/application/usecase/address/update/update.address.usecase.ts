@@ -3,6 +3,7 @@ import {AddressFactory} from "../../../../domain/address/factory/address.factory
 import {CreateAddressUseCaseInput} from "../create/input/create.address.usecase.input";
 import Address from "../../../../domain/address/entity/address";
 import {UsecaseExecutionException} from "../../../../exception/usecase.execution.exception";
+import {UpdateAddressUsecaseInput} from "./input/update.address.usecase.input";
 
 export class UpdateAddressUsecase {
     private static instance: UpdateAddressUsecase;
@@ -20,7 +21,7 @@ export class UpdateAddressUsecase {
         return UpdateAddressUsecase.instance;
     }
 
-    async execute(input: CreateAddressUseCaseInput): Promise<void> {
+    async execute(input: UpdateAddressUsecaseInput): Promise<void> {
         try {
             console.log("[UpdateAddressUsecase] - Atualizando endereço com input: ", input);
             const address = this.createInstanceOfAddress(input);
@@ -35,8 +36,8 @@ export class UpdateAddressUsecase {
         }
     }
 
-    private createInstanceOfAddress(input: CreateAddressUseCaseInput): Address {
-        return AddressFactory.create(input);
+    private createInstanceOfAddress(input: UpdateAddressUsecaseInput): Address {
+        return AddressFactory.createWithId(input);
     }
 
     private async sendAddressToDatabase(address: Address): Promise<void> {

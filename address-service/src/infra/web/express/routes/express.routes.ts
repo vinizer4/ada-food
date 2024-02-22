@@ -11,7 +11,7 @@ export class ExpressRoutesConfig {
     }
 
     public initializeRoutes(): void {
-        this.app.get('/addresses:userId', this.addressController.findAddressByUser.bind(this.addressController));
+        this.app.get('/addresses/:userId', this.addressController.findAddressByUser.bind(this.addressController));
         this.app.post('/addresses', this.addressController.createAddress.bind(this.addressController));
         this.app.put('/addresses', this.addressController.updateAddress.bind(this.addressController));
         this.app.delete('/addresses/:id', this.addressController.deleteAddress.bind(this.addressController));
