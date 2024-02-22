@@ -87,10 +87,10 @@ export class UserController {
 
     async deleteUser(req: Request, res: Response) {
         try {
-            const userId = req.path;
+            const userId = req.params.id;
             const input = {id: userId};
             await this.deleteUserUseCase.execute(input);
-            res.status(204)
+            res.status(204).send();
         } catch (error: any) {
             GlobalExceptionHandler.handleError(error, req, res);
         }

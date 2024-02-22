@@ -62,7 +62,7 @@ export class UserMongoRepository implements UserRepository {
 
     async deleteUser(id: string): Promise<void> {
         try {
-            await UserModel.findByIdAndDelete(id);
+            await UserModel.findOneAndDelete({ id });
         } catch (error) {
             console.error("[UserMongoRepository] Erro ao deletar usuário no banco:", error);
             throw new DatabaseOperationException("Falha ao deletar usuário no banco de dados MongoDb.");
