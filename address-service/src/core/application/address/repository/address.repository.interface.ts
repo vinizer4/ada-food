@@ -1,4 +1,4 @@
-import {Address} from "cluster";
+import Address from "../../../domain/address/entity/address";
 
 export interface AddressRepository {
     createAddress(address: Address): Promise<Address>;

@@ -2,6 +2,7 @@ import {IntegrationException} from "../../../core/exception/integration.exceptio
 import {CepApiIntegration} from "../../../core/application/integration/api/cep.api.integration";
 import axios from "axios";
 import {ViaCepApiOutput} from "./output/via.cep.api.output";
+import {ResourceNotfoundException} from "../../../core/exception/resource.notfound.exception";
 
 export class ViaCepApiIntegration implements CepApiIntegration {
     private static instance: ViaCepApiIntegration;
@@ -19,6 +20,7 @@ export class ViaCepApiIntegration implements CepApiIntegration {
         try {
             cep = this.formatCep(cep);
             const response = await axios.get(`${process.env.VIA_CEP_API_URL}/${cep}/json`);
+            this.validateResponse(response.data);
             return response.data;
         } catch (error) {
             console.log("[ViaCepApiIntegration] Falha ao buscar endereço pelo CEP");
@@ -28,5 +30,14 @@ export class ViaCepApiIntegration implements CepApiIntegration {
 
     private formatCep(cep: string): string {
         return cep.replace("-", "");
+    }
+
+    private validateResponse(response: any): void {
+        if (response.erro) {
+            throw new IntegrationException("CEP inválido");
+        }
+        if (!response.data) {
+            throw new ResourceNotfoundException("Endereço não encontrado")
+        }
     }
 }
