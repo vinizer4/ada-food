@@ -76,7 +76,7 @@ export class UserController {
 
     async findUserByEmail(req: Request, res: Response) {
         try {
-            const userEmail = req.path;
+            const userEmail = req.query.email as string;
             const input = {email: userEmail};
             const user = await this.findUserByEmailUseCase.execute(input);
             res.status(200).json(user);

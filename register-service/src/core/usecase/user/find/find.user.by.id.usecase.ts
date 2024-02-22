@@ -38,7 +38,11 @@ export class FindUserByIdUseCase {
                 email: user.email,
                 cpf: user.cpf
             }
-        } catch (error: any) {
+        }
+        catch (error: any) {
+            if (error instanceof ResourceNotfoundException) {
+                throw error;
+            }
             console.error("[FindUserByIdUseCase] - Erro na execução do usecase de busca de usuário: ", error);
             throw new UsecaseExecutionException("Erro na busca de usuário");
         }
