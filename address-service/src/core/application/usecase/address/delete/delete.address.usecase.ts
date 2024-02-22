@@ -16,11 +16,11 @@ export class deleteAdressUseCase {
         return deleteAdressUseCase.instance;
     }
 
-    async execute(input: string): Promise<void> {
+    async execute(id: string): Promise<void> {
         try {
-            console.log("[deleteAdressUseCase] - Deletando endereço com id: ", input);
+            console.log("[deleteAdressUseCase] - Deletando endereço com id: ", id);
 
-            await this.addressRepository.deleteAddress(input);
+            await this.addressRepository.deleteAddress(id);
             console.log("[deleteAdressUseCase] - Endereço deletado com sucesso");
 
             return

@@ -26,13 +26,13 @@ export class AddressMongoRepository implements AddressRepository {
         }
     }
 
-    async findAddressByUserId(userId: string): Promise<Address | null> {
+    async findAddressesByUserId(userId: string): Promise<Address[] | null> {
         try {
-            const address = await AddressModel.findOne({ userId });
-            return address ? address.toObject() : null;
+            const addresses = await AddressModel.find({ userId });
+            return addresses.map(address => address.toObject());
         } catch (error) {
-            console.error("[AddressMongoRepository] Erro ao buscar endereço por userId no banco:", error);
-            throw new DatabaseOperationException("Falha ao buscar endereço por userId no banco de dados MongoDb.");
+            console.error("[AddressMongoRepository] Erro ao buscar endereços por userId no banco:", error);
+            throw new DatabaseOperationException("Falha ao buscar endereços por userId no banco de dados MongoDb.");
         }
     }
 
