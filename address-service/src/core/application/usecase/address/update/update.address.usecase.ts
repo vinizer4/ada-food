@@ -1,4 +1,4 @@
-import {AddressRepository} from "../../../address/repository/address.repository.interface";
+import {AddressRepository} from "../../../repository/address/address.repository.interface";
 import {AddressFactory} from "../../../../domain/address/factory/address.factory";
 import {CreateAddressUseCaseInput} from "../create/input/create.address.usecase.input";
 import Address from "../../../../domain/address/entity/address";
@@ -11,6 +11,13 @@ export class UpdateAddressUsecase {
 
     private constructor(addressRepository: AddressRepository) {
         this.addressRepository = addressRepository;
+    }
+
+    public static getInstance(addressRepository: AddressRepository): UpdateAddressUsecase {
+        if (!UpdateAddressUsecase.instance) {
+            UpdateAddressUsecase.instance = new UpdateAddressUsecase(addressRepository);
+        }
+        return UpdateAddressUsecase.instance;
     }
 
     async execute(input: CreateAddressUseCaseInput): Promise<void> {
@@ -26,13 +33,6 @@ export class UpdateAddressUsecase {
             console.error("[UpdateAddressUsecase] - Erro na execução do usecase de update de endereço: ", error);
             throw new UsecaseExecutionException("Erro na atualização de endereço");
         }
-    }
-
-    public static getInstance(addressRepository: AddressRepository): UpdateAddressUsecase {
-        if (!UpdateAddressUsecase.instance) {
-            UpdateAddressUsecase.instance = new UpdateAddressUsecase(addressRepository);
-        }
-        return UpdateAddressUsecase.instance;
     }
 
     private createInstanceOfAddress(input: CreateAddressUseCaseInput): Address {

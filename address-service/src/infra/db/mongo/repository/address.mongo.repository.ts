@@ -1,4 +1,4 @@
-import {AddressRepository} from "../../../../core/application/address/repository/address.repository.interface";
+import {AddressRepository} from "../../../../core/application/repository/address/address.repository.interface";
 import AddressModel from "../model/address.model";
 import {DatabaseOperationException} from "../../../../core/exception/database.operation.exception";
 import Address from "../../../../core/domain/address/entity/address";

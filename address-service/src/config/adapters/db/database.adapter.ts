@@ -1,4 +1,4 @@
-import {AddressRepository} from "../../../core/application/address/repository/address.repository.interface";
+import {AddressRepository} from "../../../core/application/repository/address/address.repository.interface";
 import {AddressMongoRepository} from "../../../infra/db/mongo/repository/address.mongo.repository";
 
 export class DatabaseAdapter {

@@ -1,5 +1,5 @@
 import {UsecaseExecutionException} from "../../../../exception/usecase.execution.exception";
-import {AddressRepository} from "../../../address/repository/address.repository.interface";
+import {AddressRepository} from "../../../repository/address/address.repository.interface";
 
 export class deleteAdressUseCase {
     private static instance: deleteAdressUseCase;
