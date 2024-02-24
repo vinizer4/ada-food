@@ -7,12 +7,29 @@ import {UsecaseExecutionException} from "../../../exception/usecase.execution.ex
 import {CreateOrderUsecaseOutput} from "./output/create.order.usecase.output";
 
 export class CreateOrderUsecase {
+    private static instance: CreateOrderUsecase;
     private orderRepository: OrderRepository;
     private messagingBroker: MessagingBroker;
 
-    constructor(orderRepository: OrderRepository, messagingBroker: MessagingBroker) {
+    private constructor(
+        orderRepository: OrderRepository,
+        messagingBroker: MessagingBroker) {
         this.orderRepository = orderRepository;
         this.messagingBroker = messagingBroker;
+    }
+
+    public static getInstance(
+        orderRepository: OrderRepository,
+        messagingBroker: MessagingBroker
+    ): CreateOrderUsecase {
+        if (!CreateOrderUsecase.instance) {
+            CreateOrderUsecase.instance =
+                new CreateOrderUsecase(
+                    orderRepository,
+                    messagingBroker
+                );
+        }
+        return CreateOrderUsecase.instance;
     }
 
     public async execute(input: CreateOrderUsecaseInput): Promise<CreateOrderUsecaseOutput> {
@@ -29,8 +46,7 @@ export class CreateOrderUsecase {
 
             return output;
         } catch (error: any) {
-            console.error("[CreateOrderUsecase] - Erro na execução do usecase de criação de pedido: ", error);
-            throw new UsecaseExecutionException("Erro na criação de pedido");
+            throw this.exceptionHandler(error);
         }
     }
 
@@ -59,5 +75,10 @@ export class CreateOrderUsecase {
             description: order.description
         });
         await this.messagingBroker.sendMessage("order-notification", message);
+    }
+
+    private exceptionHandler(error: any) {
+        console.error("[CreateOrderUsecase] - Erro na execução do usecase de criação de pedido: ", error);
+        return new UsecaseExecutionException("Erro na criação de pedido");
     }
 }
