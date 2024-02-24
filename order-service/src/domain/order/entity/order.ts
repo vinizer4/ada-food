@@ -14,4 +14,13 @@ export class Order {
     static create(id: string, userId: string, addressId: string, description: string) {
         return new Order(id, userId, addressId, description);
     }
+
+    toSaveObjectMapper() {
+        return {
+            id: this.id,
+            userId: this.userId,
+            addressId: this.addressId,
+            description: this.description
+        };
+    }
 }
