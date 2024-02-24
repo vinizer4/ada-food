@@ -49,7 +49,7 @@ export class AddressApiIntegrationImpl implements AddressApiIntegration {
             console.error("[AddressApiIntegration] - Endereço não encontrado");
             throw new ResourceNotfoundException("Endereço não encontrado")
         }
-        if (response.status !== 200) {
+        if (response.status !== 201) {
             console.error("[AddressApiIntegration] - Erro ao criar endereço");
             throw new IntegrationException("Erro ao criar endereço")
         }

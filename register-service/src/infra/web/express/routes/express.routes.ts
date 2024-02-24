@@ -11,6 +11,7 @@ export class ExpressRouteConfig {
     }
 
     public initializeRoutes(): void {
+        this.app.post('/register/userwithaddress', this.userController.createUserWithAddress.bind(this.userController));
         this.app.post('/register/user', this.userController.createUser.bind(this.userController));
         this.app.get('/user/email', this.userController.findUserByEmail.bind(this.userController));
         this.app.get('/user/:id', this.userController.findUserById.bind(this.userController));
