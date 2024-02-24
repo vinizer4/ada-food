@@ -7,6 +7,7 @@ import {FindUserByEmailUseCase} from "../../core/usecase/user/find/find.user.by.
 import {MessagerindAdapter} from "../adapters/message/messagerind.adapter";
 import {AddressApiIntegrationImpl} from "../../infra/integration/api/address/address.api.integration.impl";
 import {CreateUserWithAddressUsecase} from "../../core/usecase/user/create/create.user.with.address.usecase";
+import {FindUserByIdWithAddressUseCase} from "../../core/usecase/user/find/find.user.with.address.usecase";
 
 export class Initializer {
     static async initialize() {
@@ -29,5 +30,9 @@ export class Initializer {
         DeleteUserUseCase.getInstance(UserRepositoryAdapter.getUserRepository());
         FindUserByIdUseCase.getInstance(UserRepositoryAdapter.getUserRepository());
         FindUserByEmailUseCase.getInstance(UserRepositoryAdapter.getUserRepository());
+        FindUserByIdWithAddressUseCase.getInstance(
+            UserRepositoryAdapter.getUserRepository(),
+            AddressApiIntegrationImpl.getInstance()
+        );
     }
 }

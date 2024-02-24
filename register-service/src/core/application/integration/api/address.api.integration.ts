@@ -4,5 +4,5 @@ import Address from "../../../domain/address/entity/address";
 
 export interface AddressApiIntegration {
     createAddress(input: CreateAddressApiInput): Promise<AddressApiOutput>;
-    findAddressByUser(userId: string): Promise<Address[] | null >;
+    findAddressByUser(userId: string): Promise<Address[]>;
 }
