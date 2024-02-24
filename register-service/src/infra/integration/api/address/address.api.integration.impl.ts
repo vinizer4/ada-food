@@ -33,9 +33,9 @@ export class AddressApiIntegrationImpl implements AddressApiIntegration {
         }
     }
 
-    async findAddressByUser(userId: string): Promise<Address[] | null> {
+    async findAddressByUser(userId: string): Promise<Address[]> {
         try {
-            const response = await axios.get(`${process.env.ADDRESS_URL}/addresses/user/${userId}`);
+            const response = await axios.get(`${process.env.ADDRESS_URL}/addresses/${userId}`);
             this.validateResponseToFind(response);
             return this.responseToOutputFindMapper(response.data);
         } catch (error: any) {
@@ -49,7 +49,7 @@ export class AddressApiIntegrationImpl implements AddressApiIntegration {
             console.error("[AddressApiIntegration] - Endereço não encontrado");
             throw new ResourceNotfoundException("Endereço não encontrado")
         }
-        if (response.status !== 200) {
+        if (response.status !== 201) {
             console.error("[AddressApiIntegration] - Erro ao criar endereço");
             throw new IntegrationException("Erro ao criar endereço")
         }

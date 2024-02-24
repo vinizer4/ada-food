@@ -7,6 +7,9 @@ import {DeleteUserUseCase} from "../../../../../core/usecase/user/delete/delete.
 import {FindUserByIdUseCase} from "../../../../../core/usecase/user/find/find.user.by.id.usecase";
 import {FindUserByEmailUseCase} from "../../../../../core/usecase/user/find/find.user.by.email.usecase";
 import {MessagerindAdapter} from "../../../../../config/adapters/message/messagerind.adapter";
+import {CreateUserWithAddressUsecase} from "../../../../../core/usecase/user/create/create.user.with.address.usecase";
+import {AddressApiIntegrationImpl} from "../../../../integration/api/address/address.api.integration.impl";
+import {FindUserByIdWithAddressUseCase} from "../../../../../core/usecase/user/find/find.user.with.address.usecase";
 
 export class UserController {
     private static instance: UserController;
@@ -16,6 +19,8 @@ export class UserController {
     private deleteUserUseCase: DeleteUserUseCase;
     private findUserByIdUseCase: FindUserByIdUseCase;
     private findUserByEmailUseCase: FindUserByEmailUseCase;
+    private createUserWithAddressUseCase: CreateUserWithAddressUsecase;
+    private findUserWithAddressUseCase: FindUserByIdWithAddressUseCase;
 
     private constructor() {
         this.createUserUseCase = CreateUserUsecase.getInstance(
@@ -34,6 +39,15 @@ export class UserController {
         this.findUserByEmailUseCase = FindUserByEmailUseCase.getInstance(
             UserRepositoryAdapter.getUserRepository()
         );
+        this.createUserWithAddressUseCase = CreateUserWithAddressUsecase.getInstance(
+            UserRepositoryAdapter.getUserRepository(),
+            MessagerindAdapter.getMessagerindAdapter(),
+            AddressApiIntegrationImpl.getInstance()
+        );
+        this.findUserWithAddressUseCase = FindUserByIdWithAddressUseCase.getInstance(
+            UserRepositoryAdapter.getUserRepository(),
+            AddressApiIntegrationImpl.getInstance()
+        );
     }
 
     public static getInstance(): UserController {
@@ -47,6 +61,16 @@ export class UserController {
         try {
             const user = req.body;
             const createdUser = await this.createUserUseCase.execute(user);
+            res.status(201).json(createdUser);
+        } catch (error: any) {
+            GlobalExceptionHandler.handleError(error, req, res);
+        }
+    }
+
+    async createUserWithAddress(req: Request, res: Response) {
+        try {
+            const user = req.body;
+            const createdUser = await this.createUserWithAddressUseCase.execute(user);
             res.status(201).json(createdUser);
         } catch (error: any) {
             GlobalExceptionHandler.handleError(error, req, res);
@@ -79,6 +103,17 @@ export class UserController {
             const userEmail = req.query.email as string;
             const input = {email: userEmail};
             const user = await this.findUserByEmailUseCase.execute(input);
+            res.status(200).json(user);
+        } catch (error: any) {
+            GlobalExceptionHandler.handleError(error, req, res);
+        }
+    }
+
+    async findUserWithAddress(req: Request, res: Response) {
+        try {
+            const userId = req.params.id;
+            const input = {id: userId};
+            const user = await this.findUserWithAddressUseCase.execute(input);
             res.status(200).json(user);
         } catch (error: any) {
             GlobalExceptionHandler.handleError(error, req, res);
