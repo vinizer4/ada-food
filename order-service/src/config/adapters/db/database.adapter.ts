@@ -5,7 +5,7 @@ import {MongoConnection} from "../../../infra/db/mongo/config/mongo-connection";
 export class DataBaseAdapter {
     private static orderRepository: OrderRepository;
 
-    static getDataBaseAdapter(): OrderRepository {
+    static getOrderRepository(): OrderRepository {
         if (!this.orderRepository) {
             throw new Error("Initializer not run.");
         }

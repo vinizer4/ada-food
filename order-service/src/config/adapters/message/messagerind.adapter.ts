@@ -1,7 +1,7 @@
 import {MessagingBroker} from "../../../core/application/integration/message/messaging.port";
 import {RabbitMQAdapter} from "../../../infra/integration/message/rabbimq/rabbit.mq.adapter";
 
-export class MessagerindAdapter {
+export class MessageBrokerAdapter {
     private static instance: MessagingBroker;
 
     static getMessagerindAdapter(): MessagingBroker {

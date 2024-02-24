@@ -7,7 +7,7 @@ import {FindOrderByUserUsecase} from "../../core/usecase/order/find/find.order.b
 export class Initializer {
     static async initialize() {
         await DataBaseAdapter.createUserRepository();
-        const dataBaseAdapter = DataBaseAdapter.getDataBaseAdapter();
+        const dataBaseAdapter = DataBaseAdapter.getOrderRepository();
 
         MessagerindAdapter.createMessagerindAdapter();
         const messageBrokerAdapter = MessagerindAdapter.getMessagerindAdapter();
