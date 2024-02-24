@@ -38,4 +38,14 @@ export class OrderMongoRepository implements OrderRepository {
             throw new DatabaseOperationException("Falha ao buscar pedido por id no banco de dados MongoDb.");
         }
     }
+
+    async findOrdersByUserId(userId: string): Promise<Order[] | null> {
+        try {
+            const orders = await OrderModel.find({ userId });
+            return orders.map(order => order.toObject());
+        } catch (error) {
+            console.error("[OrderMongoRepository] Erro ao buscar pedidos por id do usuário no banco:", error);
+            throw new DatabaseOperationException("Falha ao buscar pedidos por id do usuário no banco de dados MongoDb.");
+        }
+    }
 }
