@@ -1,4 +1,4 @@
-import {OrderRepository} from "../../../../core/application/user/repository/order.repository";
+import {OrderRepository} from "../../../../core/application/repository/order/order.repository";
 import {DatabaseOperationException} from "../../../../core/exception/database.operation.exception";
 import OrderModel from "../models/order.model";
 import {Order} from "../../../../core/domain/order/entity/order";

@@ -1,18 +1,26 @@
+import { v4 as uuidV4 } from 'uuid';
+
 export class Order {
     private id: string;
     private userId: string;
     private addressId: string;
     private description: string;
 
-    private constructor(id: string, userId: string, addressId: string, description: string) {
-        this.id = id;
+    private constructor(userId: string, addressId: string, description: string) {
+        this.id = uuidV4();
         this.userId = userId;
         this.addressId = addressId;
         this.description = description;
     }
 
-    static create(id: string, userId: string, addressId: string, description: string) {
-        return new Order(id, userId, addressId, description);
+    static create(userId: string, addressId: string, description: string) {
+        return new Order(userId, addressId, description);
+    }
+
+    static createWithId(id: string, userId: string, addressId: string, description: string) {
+        const order = new Order(userId, addressId, description);
+        order.id = id;
+        return order;
     }
 
     toSaveObjectMapper() {
@@ -22,5 +30,21 @@ export class Order {
             addressId: this.addressId,
             description: this.description
         };
+    }
+
+    getId() {
+        return this.id;
+    }
+
+    getUserId() {
+        return this.userId;
+    }
+
+    getAddressId() {
+        return this.addressId;
+    }
+
+    getDescription() {
+        return this.description;
     }
 }

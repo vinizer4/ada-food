@@ -37,7 +37,7 @@ export class CreateUserUsecase {
             console.log("[CreateUserUsecase] - Criando usuário com input: ", input);
             const user = this.createInstanceOfUser(input);
 
-            const createdUser = await this.sendUserToDatabase(user);
+            const createdUser = await this.persistUserInDatabase(user);
             console.log("[CreateUserUsecase] - Usuário criado com sucesso: ", user);
 
             const output = this.mapperUserToOutput(createdUser);
@@ -60,7 +60,7 @@ export class CreateUserUsecase {
         await this.messageBroker.sendMessage("user-register-email-notification", message);
     }
 
-    private async sendUserToDatabase(user: User) {
+    private async persistUserInDatabase(user: User) {
         const createdUser = await this.userRepository.createUser(user);
         return createdUser;
     }

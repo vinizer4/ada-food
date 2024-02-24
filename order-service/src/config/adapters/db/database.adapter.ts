@@ -1,4 +1,4 @@
-import {OrderRepository} from "../../../core/application/user/repository/order.repository";
+import {OrderRepository} from "../../../core/application/repository/order/order.repository";
 import {OrderMongoRepository} from "../../../infra/db/mongo/repository/order.mongo.repository";
 
 export class DataBaseAdapter {
