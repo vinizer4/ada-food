@@ -1,4 +1,4 @@
-import {Order} from "../entity/order";
+import {Order} from "../../../domain/order/entity/order";
 
 export interface OrderRepository {
     createOrder(order: Order): Promise<Order>;

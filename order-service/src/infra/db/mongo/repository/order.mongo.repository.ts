@@ -1,7 +1,7 @@
-import {OrderRepository} from "../../../../domain/order/repository/order.repository";
-import {DatabaseOperationException} from "../../../../domain/exceptions/database.operation.exception";
+import {OrderRepository} from "../../../../core/application/user/repository/order.repository";
+import {DatabaseOperationException} from "../../../../core/exception/database.operation.exception";
 import OrderModel from "../models/order.model";
-import {Order} from "../../../../domain/order/entity/order";
+import {Order} from "../../../../core/domain/order/entity/order";
 
 export class OrderMongoRepository implements OrderRepository {
     private static instance: OrderMongoRepository;
