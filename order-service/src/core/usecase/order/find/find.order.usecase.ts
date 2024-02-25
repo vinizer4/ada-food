@@ -61,10 +61,10 @@ export class FindOrderUsecase {
 
     private toOutputMapper(order: Order): FindOrderUsecaseOutput {
         return {
-            id: order.getId(),
-            userId: order.getUserId(),
-            addressId: order.getAddressId(),
-            description: order.getDescription()
+            id: order.id,
+            userId: order.userId,
+            addressId: order.addressId,
+            description: order.description
         };
     }
 

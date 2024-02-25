@@ -60,10 +60,10 @@ export class CreateOrderUsecase {
 
     private mapperOrderToOutput(order: Order): CreateOrderUsecaseOutput {
         return {
-            id: order.getId(),
-            userId: order.getUserId(),
-            addressId: order.getAddressId(),
-            description: order.getDescription()
+            id: order.id,
+            userId: order.userId,
+            addressId: order.addressId,
+            description: order.description
         }
     }
 
