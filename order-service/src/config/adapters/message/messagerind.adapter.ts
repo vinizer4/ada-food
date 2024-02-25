@@ -1,4 +1,4 @@
-import {MessagingBroker} from "../../../core/application/integration/message/messaging.port";
+import {MessagingBroker} from "../../../core/application/integration/message/message.broker";
 import {RabbitMQAdapter} from "../../../infra/integration/message/rabbimq/rabbit.mq.adapter";
 
 export class MessageBrokerAdapter {
