@@ -11,8 +11,8 @@ import {MessagingBroker} from "../../../application/integration/message/messagin
 import User from "../../../domain/user/entity/user";
 import Address from "../../../domain/address/entity/address";
 import {AddressFactory} from "../../../domain/address/factory/address.factory";
-import {AddressApiIntegration} from "../../../application/integration/api/address.api.integration";
-import {AddressApiOutput} from "../../../application/integration/api/output/address.api.output";
+import {AddressApiIntegration} from "../../../application/integration/api/address/address.api.integration";
+import {AddressApiOutput} from "../../../application/integration/api/address/output/address.api.output";
 
 export class CreateUserWithAddressUsecase {
     private static instance: CreateUserWithAddressUsecase;

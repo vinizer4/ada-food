@@ -1,8 +1,8 @@
-import {AddressApiIntegration} from "../../../../core/application/integration/api/address.api.integration";
+import {AddressApiIntegration} from "../../../../core/application/integration/api/address/address.api.integration";
 import {
     CreateAddressApiInput
-} from "../../../../core/application/integration/api/input/address.api.input";
-import {AddressApiOutput} from "../../../../core/application/integration/api/output/address.api.output";
+} from "../../../../core/application/integration/api/address/input/address.api.input";
+import {AddressApiOutput} from "../../../../core/application/integration/api/address/output/address.api.output";
 import Address from "../../../../core/domain/address/entity/address";
 import axios from "axios";
 import {IntegrationException} from "../../../../core/exception/integration.exception";
@@ -29,7 +29,7 @@ export class AddressApiIntegrationImpl implements AddressApiIntegration {
             return this.responseToOutputCreateMapper(response.data);
         } catch (error: any) {
             console.error("Error calling Address Service", error);
-            throw new Error("Failed to create address in Address Service");
+            throw new IntegrationException("Failed to create address in Address Service");
         }
     }
 
@@ -40,7 +40,7 @@ export class AddressApiIntegrationImpl implements AddressApiIntegration {
             return this.responseToOutputFindMapper(response.data);
         } catch (error: any) {
             console.error("Error calling Address Service", error);
-            throw new Error("Failed to find address in Address Service");
+            throw new IntegrationException("Failed to find address in Address Service");
         }
     }
 
