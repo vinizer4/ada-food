@@ -35,7 +35,9 @@ export class RabbitmqMessageBroker implements MessageBroker {
                     channel.ack(msg);
                 } catch (error) {
                     console.error('Error processing message: ', error);
-                    channel.nack(msg);
+
+                    const reenqueueOnFailure = process.env.RABBITMQ_REENQUEUE_ON_FAILURE === 'true';
+                    channel.nack(msg, false, reenqueueOnFailure);
                 }
             }
         });
