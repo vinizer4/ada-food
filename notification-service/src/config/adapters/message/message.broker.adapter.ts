@@ -1,10 +1,10 @@
-import {MessagingBroker} from "../../../core/application/integration/message/message.broker";
-import {RabbitMQAdapter} from "../../../infra/integration/message/rabbimq/rabbit.mq.adapter";
+import {RabbitmqMessageBroker} from "../../../infra/integration/message/rabbitmq/rabbitmq.message.broker";
+import {MessageBroker} from "../../../core/integration/message/message.broker";
 
 export class MessageBrokerAdapter {
-    private static instance: MessagingBroker;
+    private static instance: MessageBroker;
 
-    static getMessagerindAdapter(): MessagingBroker {
+    static getMessagerindAdapter(): MessageBroker {
         if (!this.instance) {
             throw new Error("MessagerindAdapter not initialized");
         }
@@ -17,7 +17,7 @@ export class MessageBrokerAdapter {
             if (!rabbitmqUri) {
                 throw new Error("RABBITMQ_URI not set");
             }
-            this.instance = new RabbitMQAdapter(rabbitmqUri);
+            this.instance = new RabbitmqMessageBroker(rabbitmqUri);
         } else {
             throw new Error("Invalid message broker");
         }

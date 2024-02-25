@@ -1,7 +1,7 @@
 import * as amqp from 'amqplib';
 import {
     MessagingBroker
-} from "../../../../core/application/integration/message/messaging.port";
+} from "../../../../core/application/integration/message/message.broker";
 import {IntegrationException} from "../../../../core/exception/integration.exception";
 
 export class RabbitMQAdapter implements MessagingBroker {
