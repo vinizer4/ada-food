@@ -1,4 +1,4 @@
-import {ExpressServer} from "./infra/web/express/server";
+import {ExpressServer} from "./infra/web/express/server/server";
 import dotenv from 'dotenv';
 import {Initializer} from "./config/init/initializer";
 
@@ -7,7 +7,7 @@ const main = async () => {
 
     console.log(process.env.DB_TYPE)
 
-    Initializer.initialize();
+    await Initializer.initialize();
     const server = new ExpressServer()
     await server.start();
 }

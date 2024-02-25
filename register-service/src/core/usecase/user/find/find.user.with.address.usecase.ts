@@ -3,7 +3,7 @@ import {UsecaseExecutionException} from "../../../exception/usecase.execution.ex
 import {FindUserWithAddressOutputUsecase} from "./output/find.output.usecase";
 import {FindUserByIdInputUsecase} from "./input/find.input.usecase";
 import {ResourceNotfoundException} from "../../../exception/resource.notfound.exception";
-import {AddressApiIntegration} from "../../../application/integration/api/address.api.integration";
+import {AddressApiIntegration} from "../../../application/integration/api/address/address.api.integration";
 import Address from "../../../domain/address/entity/address";
 
 export class FindUserByIdWithAddressUseCase {
@@ -48,11 +48,7 @@ export class FindUserByIdWithAddressUseCase {
             return this.mapperToOutput(validUser, addresses);
         }
         catch (error: any) {
-            if (error instanceof ResourceNotfoundException) {
-                throw error;
-            }
-            console.error("[FindUserByIdUseCase] - Erro na execução do usecase de busca de usuário: ", error);
-            throw new UsecaseExecutionException("Erro na busca de usuário");
+            throw this.exceptionHandler(error);
         }
     }
 
@@ -90,5 +86,13 @@ export class FindUserByIdWithAddressUseCase {
             cpf: user.cpf,
             address: addressesOutput
         }
+    }
+
+    private exceptionHandler(error: any): UsecaseExecutionException {
+        if (error instanceof ResourceNotfoundException) {
+            return  error;
+        }
+        console.error("[FindUserByEmailUseCase] - Erro na execução do usecase de busca de usuário: ", error);
+        return new UsecaseExecutionException("Erro na busca de usuário");
     }
 }

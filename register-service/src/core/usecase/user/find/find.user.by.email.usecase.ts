@@ -3,6 +3,7 @@ import {UsecaseExecutionException} from "../../../exception/usecase.execution.ex
 import {FindUserOutputUsecase} from "./output/find.output.usecase";
 import {FindUserByEmailInputUsecase} from "./input/find.input.usecase";
 import {ResourceNotfoundException} from "../../../exception/resource.notfound.exception";
+import User from "../../../domain/user/entity/user";
 
 export class FindUserByEmailUseCase {
     private static instance: FindUserByEmailUseCase;
@@ -25,22 +26,34 @@ export class FindUserByEmailUseCase {
 
             const user = await this.userRepository.findUserByEmail(input.email);
 
-            if (!user) {
-                console.error("[FindUserByEmailUseCase] - Usuário não encontrado com email: ", input.email);
-                throw new ResourceNotfoundException("Usuário não encontrado");
-            }
+            const validUser = this.validUser(user, input);
 
-            console.log("[FindUserByEmailUseCase] - Usuário buscado com sucesso: ", user);
+            console.log("[FindUserByEmailUseCase] - Usuário buscado com sucesso: ", validUser);
 
             return {
-                id: user.id,
-                name: user.name,
-                email: user.email,
-                cpf: user.cpf
+                id: validUser.id,
+                name: validUser.name,
+                email: validUser.email,
+                cpf: validUser.cpf
             }
         } catch (error: any) {
-            console.error("[FindUserByEmailUseCase] - Erro na execução do usecase de update de usuário: ", error);
-            throw new UsecaseExecutionException("Erro na atualização de usuário");
+            throw this.exceptionHandler(error);
         }
+    }
+
+    private exceptionHandler(error: any): UsecaseExecutionException {
+        if (error instanceof ResourceNotfoundException) {
+            return  error;
+        }
+        console.error("[FindUserByEmailUseCase] - Erro na execução do usecase de busca de usuário: ", error);
+        return new UsecaseExecutionException("Erro na busca de usuário");
+    }
+
+    private validUser(user: User | null, input: FindUserByEmailInputUsecase): User {
+        if (!user) {
+            console.error("[FindUserByEmailUseCase] - Usuário não encontrado com email: ", input.email);
+            throw new ResourceNotfoundException("Usuário não encontrado");
+        }
+        return user;
     }
 }

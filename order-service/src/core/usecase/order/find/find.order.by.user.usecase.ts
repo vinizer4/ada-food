@@ -3,6 +3,7 @@ import {FindOrderUsecaseOutput} from "./output/find.order.usecase.output";
 import {FindOrderUsecaseByUserIdInput} from "./input/find.order.usecase.input";
 import {Order} from "../../../domain/order/entity/order";
 import {ResourceNotfoundException} from "../../../exception/resource.notfound.exception";
+import {UsecaseExecutionException} from "../../../exception/usecase.execution.exception";
 
 export class FindOrderByUserUsecase {
     private static instance: FindOrderByUserUsecase;
@@ -52,7 +53,7 @@ export class FindOrderByUserUsecase {
             return  error;
         }
         console.error("[FindOrderByUserUsecase] - Erro na execução do usecase de busca de pedidos: ", error);
-        return new Error("Erro na busca de pedidos");
+        return new UsecaseExecutionException("Erro na busca de pedidos");
     }
 
     private toOutputMapper(orders: Order[]): FindOrderUsecaseOutput[] {
