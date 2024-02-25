@@ -76,6 +76,6 @@ export class LoginWithUserEmailUsecase {
             return  error;
         }
         console.error("[LoginUserUsecase] - Erro na execução do usecase de login de usuário: ", error);
-        return new AuthenticationException("Erro na autenticação de usuário");
+        return new AuthenticationException("Erro na autenticação de usuário com email, verifique as credenciais e tente novamente.");
     }
 }

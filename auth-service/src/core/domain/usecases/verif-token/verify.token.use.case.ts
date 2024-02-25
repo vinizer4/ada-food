@@ -26,6 +26,7 @@ export class VerifyTokenUseCase {
 
     async execute(token: string): Promise<boolean> {
         try {
+            console.log("[AuthController] - Iniciando verificação de token")
             return this.tokenService.verifyToken(token);
         }
         catch (error: any) {

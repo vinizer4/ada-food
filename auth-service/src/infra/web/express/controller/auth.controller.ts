@@ -40,7 +40,6 @@ export class AuthController {
 
     async verifyToken(req: any, res: any): Promise<void> {
         try {
-            console.log("[AuthController] - Iniciando verificação de token");
             const token = req.headers.authorization as string;
             const output = await this.verifyTokenUseCase.execute(token);
             res.status(200).json(output);

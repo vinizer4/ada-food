@@ -11,7 +11,7 @@ export class ExpressServer {
         try {
             const PORT = Number(process.env.PORT) || 3000;
             this.expressApp.app.listen(PORT, () => {
-                console.log(`Express register server running on port ${PORT}`);
+                console.log(`Express auth server running on port ${PORT}`);
             });
         } catch (error: any) {
             console.error("[ExpressServer] - Erro ao iniciar servidor: ", error);

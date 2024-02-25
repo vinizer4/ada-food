@@ -11,7 +11,7 @@ export class ExpressRouteConfig {
     }
 
     public initializeRoutes(): void {
-        this.app.post('/auth/loginwithemail', this.authController.loginWithEmail.bind(this.authController));
-        this.app.post('/auth/verifytoken', this.authController.verifyToken.bind(this.authController));
+        this.app.get('/auth/loginwithemail', this.authController.loginWithEmail.bind(this.authController));
+        this.app.get('/auth/verifytoken', this.authController.verifyToken.bind(this.authController));
     }
 }
