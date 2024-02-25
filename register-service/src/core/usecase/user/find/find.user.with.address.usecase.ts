@@ -5,6 +5,7 @@ import {FindUserByIdInputUsecase} from "./input/find.input.usecase";
 import {ResourceNotfoundException} from "../../../exception/resource.notfound.exception";
 import {AddressApiIntegration} from "../../../application/integration/api/address/address.api.integration";
 import Address from "../../../domain/address/entity/address";
+import {IntegrationException} from "../../../exception/integration.exception";
 
 export class FindUserByIdWithAddressUseCase {
     private static instance: FindUserByIdWithAddressUseCase;
@@ -45,7 +46,9 @@ export class FindUserByIdWithAddressUseCase {
 
             const addresses = await this.findAddressByUserId(validUser.id);
 
-            return this.mapperToOutput(validUser, addresses);
+            const validAddresses = this.validateAddressResponse(addresses);
+
+            return this.mapperToOutput(validUser, validAddresses);
         }
         catch (error: any) {
             throw this.exceptionHandler(error);
@@ -60,7 +63,7 @@ export class FindUserByIdWithAddressUseCase {
         return user;
     }
 
-    private async findAddressByUserId(userId: string): Promise<Address[]> {
+    private async findAddressByUserId(userId: string): Promise<Address[] | Error> {
         return await this.addressApiIntegration.findAddressByUser(userId);
     }
 
@@ -94,5 +97,13 @@ export class FindUserByIdWithAddressUseCase {
         }
         console.error("[FindUserByEmailUseCase] - Erro na execução do usecase de busca de usuário: ", error);
         return new UsecaseExecutionException("Erro na busca de usuário");
+    }
+
+    private validateAddressResponse(addresses: Address[] | Error) {
+        if (addresses instanceof Error) {
+            console.error("[FindAddressByUserUsecase] - Erro na busca de endereços por usuário: ", addresses);
+            throw new IntegrationException("Erro na busca de endereços por usuário");
+        }
+        return addresses;
     }
 }
