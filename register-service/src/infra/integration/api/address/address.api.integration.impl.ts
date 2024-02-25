@@ -33,14 +33,17 @@ export class AddressApiIntegrationImpl implements AddressApiIntegration {
         }
     }
 
-    async findAddressByUser(userId: string): Promise<Address[]> {
+    async findAddressByUser(userId: string): Promise<Address[] | Error> {
         try {
             const response = await axios.get(`${process.env.ADDRESS_URL}/addresses/${userId}`);
             this.validateResponseToFind(response);
             return this.responseToOutputFindMapper(response.data);
         } catch (error: any) {
-            console.error("Error calling Address Service", error);
-            throw new IntegrationException("Failed to find address in Address Service");
+            if (error instanceof ResourceNotfoundException) {
+                return  [];
+            }
+            console.error("[AddressApiIntegration] - Erro na execução da integração de endereço: ", error);
+            return  new IntegrationException("Erro na integração de endereço");
         }
     }
 

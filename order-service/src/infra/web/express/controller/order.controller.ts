@@ -5,6 +5,7 @@ import {DataBaseAdapter} from "../../../../config/adapters/db/database.adapter";
 import {MessageBrokerAdapter} from "../../../../config/adapters/message/messagerind.adapter";
 import { Request, Response } from 'express';
 import {GlobalExceptionHandler} from "../middleware/exception/global.exception.handler";
+import {RegisterApiIntegrationImpl} from "../../../integration/api/register/register.api.integration.impl";
 
 export class OrderController {
     private static instance: OrderController;
@@ -16,7 +17,8 @@ export class OrderController {
     private constructor() {
         this.createOrderUsecase = CreateOrderUsecase.getInstance(
             DataBaseAdapter.getOrderRepository(),
-            MessageBrokerAdapter.getMessagerindAdapter()
+            MessageBrokerAdapter.getMessagerindAdapter(),
+            RegisterApiIntegrationImpl.getInstance()
         )
         this.findOrderUsecase = FindOrderUsecase.getInstance(
             DataBaseAdapter.getOrderRepository()
