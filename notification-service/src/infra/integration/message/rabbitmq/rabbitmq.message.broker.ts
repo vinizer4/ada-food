@@ -8,9 +8,18 @@ export class RabbitmqMessageBroker implements MessageBroker {
 
     constructor(private uri: string) {}
 
-    async init() {
-        this.connection = await amqp.connect(this.uri);
-        this.channel = await this.connection.createChannel();
+    async connect(): Promise<void> {
+        try {
+            console.log("Connecting to RabbitMQ");
+            this.connection = await amqp.connect(this.uri);
+            this.channel = await this.connection.createChannel();
+
+            await this.channel.assertQueue("order-notification", { durable: true });
+            await this.channel.assertQueue("user-register-email-notification", { durable: true });
+        } catch (error) {
+            console.error("Error connecting to RabbitMQ", error);
+            throw new IntegrationException("Error connecting to RabbitMQ")
+        }
     }
 
     async consume(queueName: string, callback: (message: string) => Promise<void>): Promise<void> {
@@ -19,7 +28,7 @@ export class RabbitmqMessageBroker implements MessageBroker {
         }
         const channel = this.channel;
         await channel.assertQueue(queueName, { durable: true });
-        channel.consume(queueName, async (msg) => {
+        await channel.consume(queueName, async (msg) => {
             if (msg) {
                 try {
                     await callback(msg.content.toString());
