@@ -1,16 +1,30 @@
 import { v4 as uuidV4 } from 'uuid';
+import {Error} from "mongoose";
 
 export class Order {
-    private id: string;
-    private userId: string;
-    private addressId: string;
-    private description: string;
+    private _id: string;
+    private _userId: string;
+    private _addressId: string;
+    private _description: string;
 
     private constructor(userId: string, addressId: string, description: string) {
-        this.id = uuidV4();
-        this.userId = userId;
-        this.addressId = addressId;
-        this.description = description;
+        this._id = uuidV4();
+        this._userId = userId;
+        this._addressId = addressId;
+        this._description = description;
+        this.validate();
+    }
+
+    private validate() {
+        if (this._description.length === 0) {
+            throw new Error('Description is required');
+        }
+        if (this._userId.length === 0) {
+            throw new Error('User is required');
+        }
+        if (this._addressId.length === 0) {
+            throw new Error('Address is required');
+        }
     }
 
     static create(userId: string, addressId: string, description: string) {
@@ -19,32 +33,32 @@ export class Order {
 
     static createWithId(id: string, userId: string, addressId: string, description: string) {
         const order = new Order(userId, addressId, description);
-        order.id = id;
+        order._id = id;
         return order;
     }
 
     toSaveObjectMapper() {
         return {
-            id: this.id,
-            userId: this.userId,
-            addressId: this.addressId,
-            description: this.description
+            userId: this._userId,
+            addressId: this._addressId,
+            description: this._description
         };
     }
 
-    getId() {
-        return this.id;
+
+    get id(): string {
+        return this._id;
     }
 
-    getUserId() {
-        return this.userId;
+    get userId(): string {
+        return this._userId;
     }
 
-    getAddressId() {
-        return this.addressId;
+    get addressId(): string {
+        return this._addressId;
     }
 
-    getDescription() {
-        return this.description;
+    get description(): string {
+        return this._description;
     }
 }

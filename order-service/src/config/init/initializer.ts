@@ -1,4 +1,4 @@
-import {MessagerindAdapter} from "../adapters/message/messagerind.adapter";
+import {MessageBrokerAdapter} from "../adapters/message/messagerind.adapter";
 import {DataBaseAdapter} from "../adapters/db/database.adapter";
 import {CreateOrderUsecase} from "../../core/usecase/order/create/create.order.usecase";
 import {FindOrderUsecase} from "../../core/usecase/order/find/find.order.usecase";
@@ -9,8 +9,8 @@ export class Initializer {
         await DataBaseAdapter.createUserRepository();
         const dataBaseAdapter = DataBaseAdapter.getOrderRepository();
 
-        MessagerindAdapter.createMessagerindAdapter();
-        const messageBrokerAdapter = MessagerindAdapter.getMessagerindAdapter();
+        MessageBrokerAdapter.createMessagerindAdapter();
+        const messageBrokerAdapter = MessageBrokerAdapter.getMessagerindAdapter();
         await messageBrokerAdapter.connect();
 
         CreateOrderUsecase.getInstance(dataBaseAdapter, messageBrokerAdapter);

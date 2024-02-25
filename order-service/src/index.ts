@@ -7,7 +7,7 @@ const main = async () => {
 
     console.log(process.env.DB_TYPE)
 
-    Initializer.initialize();
+    await Initializer.initialize();
     const server = new ExpressServer()
     await server.start();
 }
