@@ -1,5 +1,5 @@
-import {MongoConnection} from "../../db/mongo/config/mongo-connection";
-import {ExpressConfig} from "./config/express.config";
+import {MongoConnection} from "../../../db/mongo/config/mongo-connection";
+import {ExpressConfig} from "../config/express.config";
 
 
 export class ExpressServer {
