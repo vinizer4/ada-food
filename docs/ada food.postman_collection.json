@@ -1,0 +1,1096 @@
+{
+	"info": {
+		"_postman_id": "11f92013-d744-4c39-8877-fe28ff754041",
+		"name": "ada food",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21602506",
+		"_collection_link": "https://red-meadow-781828.postman.co/workspace/SGS~4976f019-8131-4b08-8602-9620529eb7e3/collection/21602506-11f92013-d744-4c39-8877-fe28ff754041?action=share&source=collection_link&creator=21602506"
+	},
+	"item": [
+		{
+			"name": "register",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Teste13434\",\r\n    \"cpf\": \"19090903123123\",\r\n    \"email\": \"teste1123123@teste.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/register/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"register",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User With Address",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Teste221\",\r\n    \"cpf\": \"190909002321\",\r\n    \"email\": \"teste2221@teste.com\",\r\n    \"address\": [\r\n        {\r\n            \"userId\": \"65d573063da9632e2b283884\",\r\n            \"street\": \"teste1\",\r\n            \"number\": 123,\r\n            \"neighborhood\": \"teste1\",\r\n            \"city\": \"teste1\",\r\n            \"state\": \"teste1\",\r\n            \"country\": \"teste1\",\r\n            \"cep\": \"76195-000\"\r\n        },\r\n        {\r\n            \"userId\": \"65d573063da9632e2b283884\",\r\n            \"street\": \"teste12\",\r\n            \"number\": 1232,\r\n            \"neighborhood\": \"teste12\",\r\n            \"city\": \"teste12\",\r\n            \"state\": \"teste12\",\r\n            \"country\": \"teste12\",\r\n            \"cep\": \"76195-000\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/register/userwithaddress",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"register",
+								"userwithaddress"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"911fc713-060b-41a7-987e-bb17d542f46f\",\r\n    \"name\": \"Teste22update\",\r\n    \"email\": \"teste222@teste.com\",\r\n    \"cpf\": \"19090900232\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User by ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjBmOTZiLTIzZGQtNDdkYS05MTYxLWJkMTE4YWJkY2M3OSIsImVtYWlsIjoidGVzdGUxQHRlc3RlLmNvbSIsImlhdCI6MTcwODg4OTE1NCwiZXhwIjoxNzA4OTA3MTU0fQ.FRoJJ4ugq8CQzCApZFb9Zh3R_fmH9SQp4cvNuU3MY5y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Teste221\",\r\n    \"cpf\": \"190909002321\",\r\n    \"email\": \"teste2221@teste.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/user/55b0f96b-23dd-47da-9161-bd118abdcc79",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"user",
+								"55b0f96b-23dd-47da-9161-bd118abdcc79"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User with address by ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/userwithaddress/55b0f96b-23dd-47da-9161-bd118abdcc79",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"userwithaddress",
+								"55b0f96b-23dd-47da-9161-bd118abdcc79"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User by email",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Teste221\",\r\n    \"cpf\": \"190909002321\",\r\n    \"email\": \"teste2221@teste.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/user/email?email=teste1@teste.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"user",
+								"email"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "teste1@teste.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User by ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/user/cea95eed-5c96-4f75-b624-01c4a77cebe3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"user",
+								"cea95eed-5c96-4f75-b624-01c4a77cebe3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "address",
+			"item": [
+				{
+					"name": "Get Address by CEP",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/addresses/cep/76195-000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"addresses",
+								"cep",
+								"76195-000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Address",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"65d573063da9632e2b283884\",\r\n    \"street\": \"teste1\",\r\n    \"number\": 123,\r\n    \"neighborhood\": \"teste1\",\r\n    \"city\": \"teste1\",\r\n    \"state\": \"teste1\",\r\n    \"country\": \"teste1\",\r\n    \"cep\": \"76195-000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3002/addresses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"addresses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Address",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"6c6b6b74-4087-4892-9fb5-76507b3e6c7e\",\r\n    \"userId\": \"65d573063da9632e2b283884\",\r\n    \"street\": \"teste1update\",\r\n    \"number\": 123,\r\n    \"neighborhood\": \"teste1\",\r\n    \"city\": \"teste1\",\r\n    \"state\": \"teste1\",\r\n    \"country\": \"teste1\",\r\n    \"cep\": \"76195-000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3002/addresses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"addresses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Address by userID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"65d573063da9632e2b283884\",\r\n    \"street\": \"teste1\",\r\n    \"number\": 123,\r\n    \"neighborhood\": \"teste1\",\r\n    \"city\": \"teste1\",\r\n    \"state\": \"teste1\",\r\n    \"country\": \"teste1\",\r\n    \"cep\": \"76195-000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3002/addresses/65d573063da9632e2b283884",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"addresses",
+								"65d573063da9632e2b283884"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Address by ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"65d573063da9632e2b283884\",\r\n    \"street\": \"teste1\",\r\n    \"number\": 123,\r\n    \"neighborhood\": \"teste1\",\r\n    \"city\": \"teste1\",\r\n    \"state\": \"teste1\",\r\n    \"country\": \"teste1\",\r\n    \"cep\": \"76195-000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3002/addresses/6c6b6b74-4087-4892-9fb5-76507b3e6c7e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"addresses",
+								"6c6b6b74-4087-4892-9fb5-76507b3e6c7e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3004/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3004",
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"1433646a-8717-497d-9371-080e85113a80\",\r\n    \"addressId\": \"f623a363-135b-41d8-95ce-ae6315bda106\",\r\n    \"description\": \"teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3003/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3003",
+							"path": [
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get order by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3003/order/97a66151-aaf3-43da-b6c7-6e1a5274f3b4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3003",
+							"path": [
+								"order",
+								"97a66151-aaf3-43da-b6c7-6e1a5274f3b4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get order by User Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3003/order/user/teste",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3003",
+							"path": [
+								"order",
+								"user",
+								"teste"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Login with Email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3004/auth/loginwithemail?email=teste1@teste.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3004",
+							"path": [
+								"auth",
+								"loginwithemail"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "teste1@teste.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjBmOTZiLTIzZGQtNDdkYS05MTYxLWJkMTE4YWJkY2M3OSIsImVtYWlsIjoidGVzdGUxQHRlc3RlLmNvbSIsImlhdCI6MTcwODg4OTE1NCwiZXhwIjoxNzA4OTA3MTU0fQ.FRoJJ4ugq8CQzCApZFb9Zh3R_fmH9SQp4cvNuU3MY5y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3004/auth/verifytoken",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3004",
+							"path": [
+								"auth",
+								"verifytoken"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "gateway",
+			"item": [
+				{
+					"name": "register",
+					"item": [
+						{
+							"name": "Create User",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Teste13434\",\r\n    \"cpf\": \"19090903123123\",\r\n    \"email\": \"teste1123123@teste.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/register/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"register",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create User With Address",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Teste221\",\r\n    \"cpf\": \"190909002321\",\r\n    \"email\": \"teste2221@teste.com\",\r\n    \"address\": [\r\n        {\r\n            \"userId\": \"65d573063da9632e2b283884\",\r\n            \"street\": \"teste1\",\r\n            \"number\": 123,\r\n            \"neighborhood\": \"teste1\",\r\n            \"city\": \"teste1\",\r\n            \"state\": \"teste1\",\r\n            \"country\": \"teste1\",\r\n            \"cep\": \"76195-000\"\r\n        },\r\n        {\r\n            \"userId\": \"65d573063da9632e2b283884\",\r\n            \"street\": \"teste12\",\r\n            \"number\": 1232,\r\n            \"neighborhood\": \"teste12\",\r\n            \"city\": \"teste12\",\r\n            \"state\": \"teste12\",\r\n            \"country\": \"teste12\",\r\n            \"cep\": \"76195-000\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/register/userwithaddress",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"register",
+										"userwithaddress"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update User",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"911fc713-060b-41a7-987e-bb17d542f46f\",\r\n    \"name\": \"Teste22update\",\r\n    \"email\": \"teste222@teste.com\",\r\n    \"cpf\": \"19090900232\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User by ID",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjBmOTZiLTIzZGQtNDdkYS05MTYxLWJkMTE4YWJkY2M3OSIsImVtYWlsIjoidGVzdGUxQHRlc3RlLmNvbSIsImlhdCI6MTcwODg4OTE1NCwiZXhwIjoxNzA4OTA3MTU0fQ.FRoJJ4ugq8CQzCApZFb9Zh3R_fmH9SQp4cvNuU3MY5y",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Teste221\",\r\n    \"cpf\": \"190909002321\",\r\n    \"email\": \"teste2221@teste.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/user/55b0f96b-23dd-47da-9161-bd118abdcc79",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"user",
+										"55b0f96b-23dd-47da-9161-bd118abdcc79"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User with address by ID",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/userwithaddress/55b0f96b-23dd-47da-9161-bd118abdcc79",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"userwithaddress",
+										"55b0f96b-23dd-47da-9161-bd118abdcc79"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User by email",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Teste221\",\r\n    \"cpf\": \"190909002321\",\r\n    \"email\": \"teste2221@teste.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/user/email?email=teste1@teste.com",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"user",
+										"email"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "teste1@teste.com"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User by ID",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/user/cea95eed-5c96-4f75-b624-01c4a77cebe3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"user",
+										"cea95eed-5c96-4f75-b624-01c4a77cebe3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "address",
+					"item": [
+						{
+							"name": "Get Address by CEP",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/addresses/cep/76195-000",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"addresses",
+										"cep",
+										"76195-000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Address",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"65d573063da9632e2b283884\",\r\n    \"street\": \"teste1\",\r\n    \"number\": 123,\r\n    \"neighborhood\": \"teste1\",\r\n    \"city\": \"teste1\",\r\n    \"state\": \"teste1\",\r\n    \"country\": \"teste1\",\r\n    \"cep\": \"76195-000\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/addresses",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"addresses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Address",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"6c6b6b74-4087-4892-9fb5-76507b3e6c7e\",\r\n    \"userId\": \"65d573063da9632e2b283884\",\r\n    \"street\": \"teste1update\",\r\n    \"number\": 123,\r\n    \"neighborhood\": \"teste1\",\r\n    \"city\": \"teste1\",\r\n    \"state\": \"teste1\",\r\n    \"country\": \"teste1\",\r\n    \"cep\": \"76195-000\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/addresses",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"addresses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Address by userID",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"65d573063da9632e2b283884\",\r\n    \"street\": \"teste1\",\r\n    \"number\": 123,\r\n    \"neighborhood\": \"teste1\",\r\n    \"city\": \"teste1\",\r\n    \"state\": \"teste1\",\r\n    \"country\": \"teste1\",\r\n    \"cep\": \"76195-000\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/addresses/65d573063da9632e2b283884",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"addresses",
+										"65d573063da9632e2b283884"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Address by ID",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"65d573063da9632e2b283884\",\r\n    \"street\": \"teste1\",\r\n    \"number\": 123,\r\n    \"neighborhood\": \"teste1\",\r\n    \"city\": \"teste1\",\r\n    \"state\": \"teste1\",\r\n    \"country\": \"teste1\",\r\n    \"cep\": \"76195-000\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/addresses/6c6b6b74-4087-4892-9fb5-76507b3e6c7e",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"addresses",
+										"6c6b6b74-4087-4892-9fb5-76507b3e6c7e"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "order",
+					"item": [
+						{
+							"name": "Health",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/health",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"health"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Order",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"1433646a-8717-497d-9371-080e85113a80\",\r\n    \"addressId\": \"f623a363-135b-41d8-95ce-ae6315bda106\",\r\n    \"description\": \"teste\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/order",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"order"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get order by Id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjBmOTZiLTIzZGQtNDdkYS05MTYxLWJkMTE4YWJkY2M3OSIsImVtYWlsIjoidGVzdGUxQHRlc3RlLmNvbSIsImlhdCI6MTcwODkwMjk1OCwiZXhwIjoxNzA4OTIwOTU4fQ.4z8BzMK2akwkfepu3sTXkbD8BTI51l1ZAb9M2XryD5M",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/order/97a66151-aaf3-43da-b6c7-6e1a5274f3b4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"order",
+										"97a66151-aaf3-43da-b6c7-6e1a5274f3b4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get order by User Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/order/user/teste",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"order",
+										"user",
+										"teste"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "auth",
+					"item": [
+						{
+							"name": "Login with Email",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/auth/loginwithemail?email=teste1@teste.com",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"auth",
+										"loginwithemail"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "teste1@teste.com"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Verify Token",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjBmOTZiLTIzZGQtNDdkYS05MTYxLWJkMTE4YWJkY2M3OSIsImVtYWlsIjoidGVzdGUxQHRlc3RlLmNvbSIsImlhdCI6MTcwODkwMjk1OCwiZXhwIjoxNzA4OTIwOTU4fQ.4z8BzMK2akwkfepu3sTXkbD8BTI51l1ZAb9M2XryD5M",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/auth/verifytoken",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"auth",
+										"verifytoken"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
