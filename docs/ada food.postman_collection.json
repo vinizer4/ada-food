@@ -343,7 +343,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3002/addresses/65d573063da9632e2b283884",
+							"raw": "http://localhost:3002/addresses/1433646a-8717-497d-9371-080e85113a80",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -351,7 +351,7 @@
 							"port": "3002",
 							"path": [
 								"addresses",
-								"65d573063da9632e2b283884"
+								"1433646a-8717-497d-9371-080e85113a80"
 							]
 						}
 					},
@@ -391,25 +391,6 @@
 		{
 			"name": "order",
 			"item": [
-				{
-					"name": "Health",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3004/health",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3004",
-							"path": [
-								"health"
-							]
-						}
-					},
-					"response": []
-				},
 				{
 					"name": "Create Order",
 					"request": {
@@ -518,7 +499,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjBmOTZiLTIzZGQtNDdkYS05MTYxLWJkMTE4YWJkY2M3OSIsImVtYWlsIjoidGVzdGUxQHRlc3RlLmNvbSIsImlhdCI6MTcwODg4OTE1NCwiZXhwIjoxNzA4OTA3MTU0fQ.FRoJJ4ugq8CQzCApZFb9Zh3R_fmH9SQp4cvNuU3MY5y",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjBmOTZiLTIzZGQtNDdkYS05MTYxLWJkMTE4YWJkY2M3OSIsImVtYWlsIjoidGVzdGUxQHRlc3RlLmNvbSIsImlhdCI6MTcwODkwNzIyOSwiZXhwIjoxNzA4OTI1MjI5fQ.EgZHdpcsRLbqeG7Jy-MU9Xx-RqCrd6_Vi-chxAwov7A",
 									"type": "string"
 								}
 							]
@@ -551,11 +532,14 @@
 						{
 							"name": "Create User",
 							"request": {
+								"auth": {
+									"type": "noauth"
+								},
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"name\": \"Teste13434\",\r\n    \"cpf\": \"19090903123123\",\r\n    \"email\": \"teste1123123@teste.com\"\r\n}",
+									"raw": "{\r\n    \"name\": \"Teste13434434\",\r\n    \"cpf\": \"19090903123123434\",\r\n    \"email\": \"teste1123124343@teste.com\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -580,6 +564,16 @@
 						{
 							"name": "Create User With Address",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjBmOTZiLTIzZGQtNDdkYS05MTYxLWJkMTE4YWJkY2M3OSIsImVtYWlsIjoidGVzdGUxQHRlc3RlLmNvbSIsImlhdCI6MTcwODkwMzkwNiwiZXhwIjoxNzA4OTIxOTA2fQ.ZxQ0cKen2zZr6EO-0Q3k-I6vhdeaF2BrVrFhwRqoACQ",
+											"type": "string"
+										}
+									]
+								},
 								"method": "POST",
 								"header": [],
 								"body": {
@@ -609,6 +603,16 @@
 						{
 							"name": "Update User",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjBmOTZiLTIzZGQtNDdkYS05MTYxLWJkMTE4YWJkY2M3OSIsImVtYWlsIjoidGVzdGUxQHRlc3RlLmNvbSIsImlhdCI6MTcwODkwMzkwNiwiZXhwIjoxNzA4OTIxOTA2fQ.ZxQ0cKen2zZr6EO-0Q3k-I6vhdeaF2BrVrFhwRqoACQ",
+											"type": "string"
+										}
+									]
+								},
 								"method": "PUT",
 								"header": [],
 								"body": {
@@ -621,13 +625,14 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/user",
+									"raw": "http://localhost:3000/register/user",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "3000",
 									"path": [
+										"register",
 										"user"
 									]
 								}
@@ -645,7 +650,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjBmOTZiLTIzZGQtNDdkYS05MTYxLWJkMTE4YWJkY2M3OSIsImVtYWlsIjoidGVzdGUxQHRlc3RlLmNvbSIsImlhdCI6MTcwODg4OTE1NCwiZXhwIjoxNzA4OTA3MTU0fQ.FRoJJ4ugq8CQzCApZFb9Zh3R_fmH9SQp4cvNuU3MY5y",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjBmOTZiLTIzZGQtNDdkYS05MTYxLWJkMTE4YWJkY2M3OSIsImVtYWlsIjoidGVzdGUxQHRlc3RlLmNvbSIsImlhdCI6MTcwODkwNzIyOSwiZXhwIjoxNzA4OTI1MjI5fQ.EgZHdpcsRLbqeG7Jy-MU9Xx-RqCrd6_Vi-chxAwov7A",
 											"type": "string"
 										}
 									]
@@ -682,6 +687,16 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjBmOTZiLTIzZGQtNDdkYS05MTYxLWJkMTE4YWJkY2M3OSIsImVtYWlsIjoidGVzdGUxQHRlc3RlLmNvbSIsImlhdCI6MTcwODkwMjk1OCwiZXhwIjoxNzA4OTIwOTU4fQ.4z8BzMK2akwkfepu3sTXkbD8BTI51l1ZAb9M2XryD5M",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [],
 								"body": {
@@ -714,6 +729,16 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjBmOTZiLTIzZGQtNDdkYS05MTYxLWJkMTE4YWJkY2M3OSIsImVtYWlsIjoidGVzdGUxQHRlc3RlLmNvbSIsImlhdCI6MTcwODkwMjk1OCwiZXhwIjoxNzA4OTIwOTU4fQ.4z8BzMK2akwkfepu3sTXkbD8BTI51l1ZAb9M2XryD5M",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [
 									{
@@ -732,13 +757,14 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/user/email?email=teste1@teste.com",
+									"raw": "http://localhost:3000/register/user/email?email=teste1@teste.com",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "3000",
 									"path": [
+										"register",
 										"user",
 										"email"
 									],
@@ -755,6 +781,16 @@
 						{
 							"name": "Delete User by ID",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjBmOTZiLTIzZGQtNDdkYS05MTYxLWJkMTE4YWJkY2M3OSIsImVtYWlsIjoidGVzdGUxQHRlc3RlLmNvbSIsImlhdCI6MTcwODkwMzkwNiwiZXhwIjoxNzA4OTIxOTA2fQ.ZxQ0cKen2zZr6EO-0Q3k-I6vhdeaF2BrVrFhwRqoACQ",
+											"type": "string"
+										}
+									]
+								},
 								"method": "DELETE",
 								"header": [],
 								"body": {
@@ -767,13 +803,14 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/user/cea95eed-5c96-4f75-b624-01c4a77cebe3",
+									"raw": "http://localhost:3000/register/user/cea95eed-5c96-4f75-b624-01c4a77cebe3",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "3000",
 									"path": [
+										"register",
 										"user",
 										"cea95eed-5c96-4f75-b624-01c4a77cebe3"
 									]
@@ -789,6 +826,16 @@
 						{
 							"name": "Get Address by CEP",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjBmOTZiLTIzZGQtNDdkYS05MTYxLWJkMTE4YWJkY2M3OSIsImVtYWlsIjoidGVzdGUxQHRlc3RlLmNvbSIsImlhdCI6MTcwODkwNzIyOSwiZXhwIjoxNzA4OTI1MjI5fQ.EgZHdpcsRLbqeG7Jy-MU9Xx-RqCrd6_Vi-chxAwov7A",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [],
 								"url": {
@@ -810,11 +857,21 @@
 						{
 							"name": "Create Address",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjBmOTZiLTIzZGQtNDdkYS05MTYxLWJkMTE4YWJkY2M3OSIsImVtYWlsIjoidGVzdGUxQHRlc3RlLmNvbSIsImlhdCI6MTcwODkwMzkwNiwiZXhwIjoxNzA4OTIxOTA2fQ.ZxQ0cKen2zZr6EO-0Q3k-I6vhdeaF2BrVrFhwRqoACQ",
+											"type": "string"
+										}
+									]
+								},
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"userId\": \"65d573063da9632e2b283884\",\r\n    \"street\": \"teste1\",\r\n    \"number\": 123,\r\n    \"neighborhood\": \"teste1\",\r\n    \"city\": \"teste1\",\r\n    \"state\": \"teste1\",\r\n    \"country\": \"teste1\",\r\n    \"cep\": \"76195-000\"\r\n}",
+									"raw": "{\r\n    \"userId\": \"55b0f96b-23dd-47da-9161-bd118abdcc79\",\r\n    \"street\": \"teste1\",\r\n    \"number\": 123,\r\n    \"neighborhood\": \"teste1\",\r\n    \"city\": \"teste1\",\r\n    \"state\": \"teste1\",\r\n    \"country\": \"teste1\",\r\n    \"cep\": \"76195-000\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -838,6 +895,16 @@
 						{
 							"name": "Update Address",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjBmOTZiLTIzZGQtNDdkYS05MTYxLWJkMTE4YWJkY2M3OSIsImVtYWlsIjoidGVzdGUxQHRlc3RlLmNvbSIsImlhdCI6MTcwODkwMzkwNiwiZXhwIjoxNzA4OTIxOTA2fQ.ZxQ0cKen2zZr6EO-0Q3k-I6vhdeaF2BrVrFhwRqoACQ",
+											"type": "string"
+										}
+									]
+								},
 								"method": "PUT",
 								"header": [],
 								"body": {
@@ -869,6 +936,16 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjBmOTZiLTIzZGQtNDdkYS05MTYxLWJkMTE4YWJkY2M3OSIsImVtYWlsIjoidGVzdGUxQHRlc3RlLmNvbSIsImlhdCI6MTcwODkwNzIyOSwiZXhwIjoxNzA4OTI1MjI5fQ.EgZHdpcsRLbqeG7Jy-MU9Xx-RqCrd6_Vi-chxAwov7A",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [],
 								"body": {
@@ -898,6 +975,16 @@
 						{
 							"name": "Delete Address by ID",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjBmOTZiLTIzZGQtNDdkYS05MTYxLWJkMTE4YWJkY2M3OSIsImVtYWlsIjoidGVzdGUxQHRlc3RlLmNvbSIsImlhdCI6MTcwODkwMzkwNiwiZXhwIjoxNzA4OTIxOTA2fQ.ZxQ0cKen2zZr6EO-0Q3k-I6vhdeaF2BrVrFhwRqoACQ",
+											"type": "string"
+										}
+									]
+								},
 								"method": "DELETE",
 								"header": [],
 								"body": {
@@ -930,27 +1017,18 @@
 					"name": "order",
 					"item": [
 						{
-							"name": "Health",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:3000/health",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"health"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "Create Order",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjBmOTZiLTIzZGQtNDdkYS05MTYxLWJkMTE4YWJkY2M3OSIsImVtYWlsIjoidGVzdGUxQHRlc3RlLmNvbSIsImlhdCI6MTcwODkwMjk1OCwiZXhwIjoxNzA4OTIwOTU4fQ.4z8BzMK2akwkfepu3sTXkbD8BTI51l1ZAb9M2XryD5M",
+											"type": "string"
+										}
+									]
+								},
 								"method": "POST",
 								"header": [],
 								"body": {
@@ -984,7 +1062,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjBmOTZiLTIzZGQtNDdkYS05MTYxLWJkMTE4YWJkY2M3OSIsImVtYWlsIjoidGVzdGUxQHRlc3RlLmNvbSIsImlhdCI6MTcwODkwMjk1OCwiZXhwIjoxNzA4OTIwOTU4fQ.4z8BzMK2akwkfepu3sTXkbD8BTI51l1ZAb9M2XryD5M",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjBmOTZiLTIzZGQtNDdkYS05MTYxLWJkMTE4YWJkY2M3OSIsImVtYWlsIjoidGVzdGUxQHRlc3RlLmNvbSIsImlhdCI6MTcwODkwNzIyOSwiZXhwIjoxNzA4OTI1MjI5fQ.EgZHdpcsRLbqeG7Jy-MU9Xx-RqCrd6_Vi-chxAwov7A",
 											"type": "string"
 										}
 									]
@@ -1009,6 +1087,16 @@
 						{
 							"name": "Get order by User Id",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjBmOTZiLTIzZGQtNDdkYS05MTYxLWJkMTE4YWJkY2M3OSIsImVtYWlsIjoidGVzdGUxQHRlc3RlLmNvbSIsImlhdCI6MTcwODkwNzIyOSwiZXhwIjoxNzA4OTI1MjI5fQ.EgZHdpcsRLbqeG7Jy-MU9Xx-RqCrd6_Vi-chxAwov7A",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [],
 								"url": {
@@ -1035,6 +1123,9 @@
 						{
 							"name": "Login with Email",
 							"request": {
+								"auth": {
+									"type": "noauth"
+								},
 								"method": "GET",
 								"header": [],
 								"url": {
@@ -1066,7 +1157,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjBmOTZiLTIzZGQtNDdkYS05MTYxLWJkMTE4YWJkY2M3OSIsImVtYWlsIjoidGVzdGUxQHRlc3RlLmNvbSIsImlhdCI6MTcwODkwMjk1OCwiZXhwIjoxNzA4OTIwOTU4fQ.4z8BzMK2akwkfepu3sTXkbD8BTI51l1ZAb9M2XryD5M",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1YjBmOTZiLTIzZGQtNDdkYS05MTYxLWJkMTE4YWJkY2M3OSIsImVtYWlsIjoidGVzdGUxQHRlc3RlLmNvbSIsImlhdCI6MTcwODkwNzIyOSwiZXhwIjoxNzA4OTI1MjI5fQ.EgZHdpcsRLbqeG7Jy-MU9Xx-RqCrd6_Vi-chxAwov7A",
 											"type": "string"
 										}
 									]
