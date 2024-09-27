@@ -2,6 +2,9 @@
 
 O AdaFood é um aplicativo de delivery que permite aos usuários se cadastrarem e realizarem pedidos.
 
+![image](https://github.com/user-attachments/assets/3a21f3c0-e169-4e5c-b852-3e5185ba8ab8)
+
+
 ## Serviços
 
 O projeto é dividido em vários microserviços, incluindo:
